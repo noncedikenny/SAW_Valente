@@ -15,24 +15,61 @@
     
     <!-- W3.CSS -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        .mySlides {display:none;}
+    </style>
 </head>
 
 <body>
     
-    <header class="w3-light-grey">
-        <h1 class="w3-button"><a href="index.html" style="text-decoration: none;">SAW | Cabinets</a></h1>
+    <header class="w3-grey" style="padding: 1px;">
+        <div class="w3-image w3-center" style="margin: 0 auto; padding: 25px;">
+            <a href="index.html">
+                <img src="SAWCabinet_Logo.png" alt="Logo" style="width:25%;">
+            </a>
+        </div>
 
-        <div class="w3-bar">
+        <div class="w3-bar w3-black">
             <a href="aboutus.html" class="w3-bar-item w3-button w3-mobile" style="width:25%">Chi Siamo?</a>
             <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">Catalogo</a>
             <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">FAQ</a>
             <a href="signup_form.html" class="w3-bar-item w3-button w3-mobile" style="width:25%">Registrati</a>
         </div>
-
     </header>
 
     <main>
         <!-- Sezione Foto -->
+
+        <div>
+            <img class="mySlides" src="index_photos/ph1.jpg" style="width:100%">
+            <img class="mySlides" src="index_photos/ph2.jpg" style="width:100%">
+            <img class="mySlides" src="index_photos/ph3.jpg" style="width:100%">
+            <img class="mySlides" src="index_photos/ph4.jpg" style="width:100%">
+          
+            <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+        </div>
+
+        <script>
+            var slideIndex = 1;
+            showDivs(slideIndex);
+            
+            function plusDivs(n) {
+              showDivs(slideIndex += n);
+            }
+            
+            function showDivs(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              if (n > x.length) {slideIndex = 1}
+              if (n < 1) {slideIndex = x.length}
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+              }
+              x[slideIndex-1].style.display = "block";  
+            }
+            </script>
 
         <!-- Sezione Intro -->
         <div class="w3-center">
@@ -42,22 +79,22 @@
     
         <!-- Sezione Pro -->
         <div class="w3-row-padding w3-card" style="padding: 15px; margin: 0 auto; width: 60%;">
-            <div class="w3-col l3 w3-center">
+            <div class="w3-col m3 w3-center">
                 <i class="fa fa-gamepad" style="font-size:48px;"></i>
                         <h3>Esperienza Arcade</h3>
                         <p>Vivi l'esperienza arcade che si viveva col gettone in mano nel bar della piscina!</p>
             </div>
-            <div class="w3-col l3 w3-center">
+            <div class="w3-col m3 w3-center">
                 <i class="fa fa-microchip" style="font-size:48px;"></i>
                         <h3>Hardware Ottimale</h3>
                         <p>Un buon compromesso tra l'emulazione perfetta e lo spazio!</p>
             </div>
-            <div class="w3-col l3 w3-center">
+            <div class="w3-col m3 w3-center">
                 <i class="fa fa-phone" style="font-size:48px;"></i>
                         <h3>Supporto Clienti</h3>
                         <p>Il reparto assistenza è aperto 24/7 per te!</p>
             </div>
-            <div class="w3-col l3 w3-center">
+            <div class="w3-col m3 w3-center">
                 <i class="fa fa-question" style="font-size:48px;"></i>
                         <h3>Reso Gratuito</h3>
                         <p>In caso di disguidi, ci preoccuperemo noi di sistemare l'ordine!</p>
