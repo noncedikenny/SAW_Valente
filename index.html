@@ -2,39 +2,101 @@
 <html lang="it">
 
 <head>
+    <!-- Metas -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title -->
     <title>Homepage - SAW | Cabinets</title>
+    
+    <!-- Favicon & Font Awesome Icons -->
     <link rel="icon" type="image/x-icon" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- W3.CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
     
-    <header>
-        <h1>SAW | Cabinets</h1>
+    <header class="w3-light-grey">
+        <h1 class="w3-button"><a href="index.html" style="text-decoration: none;">SAW | Cabinets</a></h1>
+
+        <div class="w3-bar">
+            <a href="aboutus.html" class="w3-bar-item w3-button w3-mobile" style="width:25%">Chi Siamo?</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">Catalogo</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">FAQ</a>
+            <a href="signup_form.html" class="w3-bar-item w3-button w3-mobile" style="width:25%">Registrati</a>
+        </div>
+
     </header>
 
     <main>
+        <!-- Sezione Foto -->
+
         <!-- Sezione Intro -->
-        <div class="index_intro">
+        <div class="w3-center">
             <h2>Scopri i nostri cabinati di alta qualità</h2>
             <p>La nostra startup offre una vasta gamma di cabinati progettati per soddisfare le esigenze di ogni cliente. Dai un'occhiata ai nostri prodotti e scopri il cabinato perfetto per te!</p>
         </div>
     
-        <!-- Altre sezioni possono essere aggiunte qui -->
-        <div class="index_navigate">
-            <nav>
-                <a href="aboutus.html">Scopri Chi Siamo</a> <br>
-                <a href="signup_form.html">Registrati</a> <br>
-                <a href="#">Catalogo</a> <br>
-                <a href="#">FAQ</a>
-            </nav>
+        <!-- Sezione Pro -->
+        <div class="w3-row-padding w3-card" style="padding: 15px; margin: 0 auto; width: 60%;">
+            <div class="w3-col l3 w3-center">
+                <i class="fa fa-gamepad" style="font-size:48px;"></i>
+                        <h3>Esperienza Arcade</h3>
+                        <p>Vivi l'esperienza arcade che si viveva col gettone in mano nel bar della piscina!</p>
+            </div>
+            <div class="w3-col l3 w3-center">
+                <i class="fa fa-microchip" style="font-size:48px;"></i>
+                        <h3>Hardware Ottimale</h3>
+                        <p>Un buon compromesso tra l'emulazione perfetta e lo spazio!</p>
+            </div>
+            <div class="w3-col l3 w3-center">
+                <i class="fa fa-phone" style="font-size:48px;"></i>
+                        <h3>Supporto Clienti</h3>
+                        <p>Il reparto assistenza è aperto 24/7 per te!</p>
+            </div>
+            <div class="w3-col l3 w3-center">
+                <i class="fa fa-question" style="font-size:48px;"></i>
+                        <h3>Reso Gratuito</h3>
+                        <p>In caso di disguidi, ci preoccuperemo noi di sistemare l'ordine!</p>
+            </div>
         </div>
     
+        <!-- Sezione Più Venduti -->
+        <div class="index_bestsellers">
+            
+        </div>
+
     </main>
 
-    <footer>
-        <p>&copy; 2024 SAW | Cabinets. Tutti i diritti riservati.</p>
+    <footer class="w3-container w3-black" style="margin-top: 50px; padding-top: 20px;">
+        <div class="w3-row-padding" style="margin: 0 auto; width:80%;">
+            <div class="w3-col m4">
+                <h3>Contatti</h3>
+                <p>Indirizzo: Via dei Fiori, 123 - Città</p>
+                <p>Email: info@example.com</p>
+                <p>Telefono: 0123456789</p>
+            </div>
+            <div class="w3-col m4">
+                <h3>Link Utili</h3>
+                <ul>
+                    <li><a href="#">Termini e Condizioni</a></li>
+                    <li><a href="#">Politica sulla Privacy</a></li>
+                    <li><a href="#">Mappa del Sito</a></li>
+                </ul>
+            </div>
+            <div class="w3-col m4">
+                <h3>Social Media</h3>
+                <a href="#"><i class="fa fa-facebook-f" style="padding-right:32px; font-size:32px;"></i></a></li>
+                <a href="#"><i class="fa fa-twitter" style="padding-right:32px; font-size:32px;"></i></a></li>
+                <a href="#"><i class="fa fa-instagram" style="padding-right:32px; font-size:32px;"></i></a></li>
+            </div>
+        </div>
+        <div class="w3-center w3-padding-16 w3-black">
+            <p>&copy; 2024 SAW | Cabinets. Tutti i diritti riservati.</p>
+        </div>
     </footer>
 
 </body>

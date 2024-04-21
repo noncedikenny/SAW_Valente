@@ -1,35 +1,52 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+    <!-- Metas -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Siamo - SAW | Cabinets</title>
+    
+    <!-- Title -->
+    <title>Registrati - SAW | Cabinets</title>
+    
+    <!-- Favicon & Font Awesome Icons -->
     <link rel="icon" type="image/x-icon" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+
+
 <body>
 
-    <header>
-        <h1><a href="index.html">SAW | Cabinets</a></h1>
+    <header class="w3-light-grey">
+        <h1 class="w3-button"><a href="index.html" style="text-decoration: none;">SAW | Cabinets</a></h1>
 
-        <nav>
-            <a href="aboutus.html">Chi Siamo?</a> |
-            <a href="signup_form.html">Registrati</a> |
-            <a href="#">Catalogo</a> |
-            <a href="#">FAQ</a>
-        </nav>
+        <div class="w3-bar">
+            <a href="aboutus.html" class="w3-bar-item w3-button w3-mobile" style="width:25%">Chi Siamo?</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">Catalogo</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">FAQ</a>
+            <a href="signup_form.html" class="w3-bar-item w3-button w3-mobile" style="width:25%">Registrati</a>
+        </div>
+
     </header>
 
     <main>
         <div class="suf_container">
-            <h2>Registrati, è gratis, il resto no...</h2>
+            <h2>Registrati, è gratis.</h2>
+            <h3>il resto no...</h3>
             <form action="" method="post">
-                <label for="username"></label>
+                <label for="username"><i class="fa fa-user"></i> Username</label> <br>
                 <input type="text" placeholder="Username" id="username" name="username"> <br>
-                <label for="email"></label>
+
+                <label for="email"><i class="fa fa-envelope"></i> Email</label> <br>
                 <input type="email" placeholder="Email" id="email" name="email"> <br>
-                <label for="password"></label>
+
+                <label for="password"><i class="fa fa-lock"></i> Password</label> <br>
                 <input type="password" placeholder="Password" id="password" name="password"> <br>
-                <label for="conf_password"></label>
+                
+                <label for="conf_password"><i class="fa fa-lock"></i> Confirm Password</label> <br>
                 <input type="password" placeholder="Confirm Password" id="conf_password" name="conf_password"> <br>
 
                 <input type="submit" value="Registrati">
@@ -37,8 +54,32 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Startup Cabinati. Tutti i diritti riservati.</p>
+    <footer class="w3-container w3-black" style="margin-top: 50px; padding-top: 20px;">
+        <div class="w3-row-padding" style="margin: 0 auto; width:80%;">
+            <div class="w3-col m4">
+                <h3>Contatti</h3>
+                <p>Indirizzo: Via dei Fiori, 123 - Città</p>
+                <p>Email: info@example.com</p>
+                <p>Telefono: 0123456789</p>
+            </div>
+            <div class="w3-col m4">
+                <h3>Link Utili</h3>
+                <ul>
+                    <li><a href="#">Termini e Condizioni</a></li>
+                    <li><a href="#">Politica sulla Privacy</a></li>
+                    <li><a href="#">Mappa del Sito</a></li>
+                </ul>
+            </div>
+            <div class="w3-col m4">
+                <h3>Social Media</h3>
+                <a href="#"><i class="fa fa-facebook-f" style="padding-right:32px; font-size:32px;"></i></a></li>
+                <a href="#"><i class="fa fa-twitter" style="padding-right:32px; font-size:32px;"></i></a></li>
+                <a href="#"><i class="fa fa-instagram" style="padding-right:32px; font-size:32px;"></i></a></li>
+            </div>
+        </div>
+        <div class="w3-center w3-padding-16 w3-black">
+            <p>&copy; 2024 SAW | Cabinets. Tutti i diritti riservati.</p>
+        </div>
     </footer>
 
 </body>
