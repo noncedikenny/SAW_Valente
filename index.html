@@ -42,43 +42,46 @@
         <!-- Sezione Foto -->
 
         <div>
-            <img class="mySlides" src="index_photos/ph1.jpg" style="width:100%">
-            <img class="mySlides" src="index_photos/ph2.jpg" style="width:100%">
-            <img class="mySlides" src="index_photos/ph3.jpg" style="width:100%">
-            <img class="mySlides" src="index_photos/ph4.jpg" style="width:100%">
-          
-            <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-            <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+            <img class="mySlides" src="index_photos/ph1.jpg" alt="SliderPhoto1" style="width:100%">
+            <img class="mySlides" src="index_photos/ph2.jpg" alt="SliderPhoto2" style="width:100%">
+            <img class="mySlides" src="index_photos/ph3.jpg" alt="SliderPhoto3" style="width:100%">
+            <img class="mySlides" src="index_photos/ph4.jpg" alt="SliderPhoto4" style="width:100%">
         </div>
 
         <script>
-            var slideIndex = 1;
-            showDivs(slideIndex);
-            
+            var slideIndex = 0;
+            showDivs();
+
             function plusDivs(n) {
-              showDivs(slideIndex += n);
+                slideIndex += n;
+                showDivs();
             }
-            
-            function showDivs(n) {
-              var i;
-              var x = document.getElementsByClassName("mySlides");
-              if (n > x.length) {slideIndex = 1}
-              if (n < 1) {slideIndex = x.length}
-              for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";  
-              }
-              x[slideIndex-1].style.display = "block";  
+
+            function showDivs() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                if (slideIndex >= x.length) {slideIndex = 0}
+                if (slideIndex < 0) {slideIndex = x.length - 1}
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";  
+                }
+                x[slideIndex].style.display = "block";
             }
-            </script>
+
+            // Aggiungi un timer per passare automaticamente alla foto successiva ogni 3 secondi
+            setInterval(function() {
+                plusDivs(1);
+            }, 3000);
+        </script>
 
         <!-- Sezione Intro -->
-        <div class="w3-center">
+        <div class="w3-center" style="padding-top: 100px">
             <h2>Scopri i nostri cabinati di alta qualità</h2>
             <p>La nostra startup offre una vasta gamma di cabinati progettati per soddisfare le esigenze di ogni cliente. Dai un'occhiata ai nostri prodotti e scopri il cabinato perfetto per te!</p>
         </div>
     
         <!-- Sezione Pro -->
-        <div class="w3-row-padding w3-card" style="padding: 15px; margin: 0 auto; width: 60%;">
+        <div class="w3-row-padding w3-card" style="padding: 30px; margin: 0 auto; margin-bottom: 200px; width: 60%;">
             <div class="w3-col m3 w3-center">
                 <i class="fa fa-gamepad" style="font-size:48px;"></i>
                         <h3>Esperienza Arcade</h3>
@@ -102,8 +105,19 @@
         </div>
     
         <!-- Sezione Più Venduti -->
-        <div class="index_bestsellers">
-            
+        <div class="w3-row-padding" style="padding: 30px; margin: 0 auto; margin-bottom: 200px; width: 60%;">
+            <div class="w3-third w3-center w3-card">
+                <img src="best_sellers_photos/best_seller1.png" alt="best_seller1" class="w3-image" style="width: 100%;">
+                <p>Setup Per Quattro Persone</p>
+            </div>
+            <div class="w3-third w3-center w3-card">
+                <img src="best_sellers_photos/best_seller2.png" alt="best_seller2" class="w3-image" style="width: 100%;">
+                <p>Setup Formato Mini</p>
+            </div>
+            <div class="w3-third w3-center w3-margin-bottom w3-card">
+                <img src="best_sellers_photos/best_seller3.png" alt="best_seller3" class="w3-image" style="width: 100%;">
+                <p>Setup Per Due Persone</p>
+            </div>
         </div>
 
     </main>
