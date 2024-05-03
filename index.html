@@ -34,7 +34,7 @@
             <a href="aboutus.html" class="w3-bar-item w3-button w3-mobile" style="width:25%">Chi Siamo?</a>
             <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">Catalogo</a>
             <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">FAQ</a>
-            <a href="signup_form.html" class="w3-bar-item w3-button w3-mobile" style="width:25%">Registrati</a>
+            <a href="registration.php" class="w3-bar-item w3-button w3-mobile" style="width:25%">Registrati</a>
         </div>
     </header>
 
@@ -49,7 +49,7 @@
         </div>
 
         <script>
-            var slideIndex = 0;
+            let slideIndex = 0;
             showDivs();
 
             function plusDivs(n) {
@@ -58,8 +58,8 @@
             }
 
             function showDivs() {
-                var i;
-                var x = document.getElementsByClassName("mySlides");
+                let i;
+                let x = document.getElementsByClassName("mySlides");
                 if (slideIndex >= x.length) {slideIndex = 0}
                 if (slideIndex < 0) {slideIndex = x.length - 1}
                 for (i = 0; i < x.length; i++) {
@@ -81,7 +81,7 @@
         </div>
     
         <!-- Sezione Pro -->
-        <div class="w3-row-padding w3-card" style="padding: 30px; margin: 0 auto; margin-bottom: 200px; width: 60%;">
+        <div class="w3-row-padding w3-card" style="padding: 30px; margin: 0 auto 200px;width: 60%;">
             <div class="w3-col m3 w3-center">
                 <i class="fa fa-gamepad" style="font-size:48px;"></i>
                         <h3>Esperienza Arcade</h3>
@@ -105,7 +105,7 @@
         </div>
     
         <!-- Sezione Più Venduti -->
-        <div class="w3-row-padding" style="padding: 30px; margin: 0 auto; margin-bottom: 200px; width: 60%;">
+        <div class="w3-row-padding" style="padding: 30px; margin: 0 auto 200px;width: 60%;">
             <div class="w3-third w3-center w3-card">
                 <img src="best_sellers_photos/best_seller1.png" alt="best_seller1" class="w3-image" style="width: 100%;">
                 <p>Setup Per Quattro Persone</p>
@@ -122,7 +122,7 @@
 
     </main>
 
-    <footer class="w3-container w3-black" style="margin-top: 50px; padding-top: 20px;">
+    <footer class="w3-container w3-black" style="padding-top: 20px;">
         <div class="w3-row-padding" style="margin: 0 auto; width:80%;">
             <div class="w3-col m4">
                 <h3>Contatti</h3>
@@ -140,9 +140,9 @@
             </div>
             <div class="w3-col m4">
                 <h3>Social Media</h3>
-                <a href="#"><i class="fa fa-facebook-f" style="padding-right:32px; font-size:32px;"></i></a></li>
-                <a href="#"><i class="fa fa-twitter" style="padding-right:32px; font-size:32px;"></i></a></li>
-                <a href="#"><i class="fa fa-instagram" style="padding-right:32px; font-size:32px;"></i></a></li>
+                <a href="#"><i class="fa fa-facebook-f" style="padding-right:32px; font-size:32px;"></i></a>
+                <a href="#"><i class="fa fa-twitter" style="padding-right:32px; font-size:32px;"></i></a>
+                <a href="#"><i class="fa fa-instagram" style="padding-right:32px; font-size:32px;"></i></a>
             </div>
         </div>
         <div class="w3-center w3-padding-16 w3-black">
