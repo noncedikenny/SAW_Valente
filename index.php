@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 
-<?php session_start(); ?>
+<?php include('utilities/cookie_check.php'); ?>
 
 <head>
     <?php include('head_items.html'); ?>
@@ -20,11 +20,11 @@
 
 <main>
     <!-- Sezione Foto -->
-    <div>
-        <img class="mySlides" src="index_photos/ph1.jpg" alt="SliderPhoto1" style="width: 100%;">
-        <img class="mySlides" src="index_photos/ph2.jpg" alt="SliderPhoto2" style="width: 100%;">
-        <img class="mySlides" src="index_photos/ph3.jpg" alt="SliderPhoto3" style="width: 100%;">
-        <img class="mySlides" src="index_photos/ph4.jpg" alt="SliderPhoto4" style="width: 100%;">
+    <div style="background-color: grey">
+        <img class="mySlides w3-animate-fading" src="index_photos/ph1.jpg" alt="SliderPhoto1" style="width: 100%;">
+        <img class="mySlides w3-animate-fading" src="index_photos/ph2.jpg" alt="SliderPhoto2" style="width: 100%;">
+        <img class="mySlides w3-animate-fading" src="index_photos/ph3.jpg" alt="SliderPhoto3" style="width: 100%;">
+        <img class="mySlides w3-animate-fading" src="index_photos/ph4.jpg" alt="SliderPhoto4" style="width: 100%;">
     </div>
 
     <script>
@@ -50,7 +50,7 @@
         // Aggiungi un timer per passare automaticamente alla foto successiva ogni 3 secondi
         setInterval(function() {
             plusDivs(1);
-        }, 3000);
+        }, 10000);
     </script>
 
     <!-- Sezione Intro -->

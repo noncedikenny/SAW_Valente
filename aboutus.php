@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
+
+<?php include('utilities/cookie_check.php'); ?>
+
 <head>
     <?php include('head_items.html'); ?>
 
@@ -67,23 +70,21 @@
 
     <!-- Sezione Raspberry -->
     <div class="w3-row-padding">
-        <div class="w3-col l6" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <h1>
+        <div class="w3-col l6">
+            <h1 class="w3-center">
                 Il Raspberry Pi 5
             </h1>
             <p>
-                Il Raspberry Pi 5 è l'ultima iterazione della famosa serie di computer a scheda singola (SBC) sviluppata dalla Raspberry Pi Foundation. Questo nuovo
-                modello rappresenta un significativo passo avanti nelle prestazioni e nelle funzionalità rispetto alle versioni precedenti.
+                Inoltre, il Raspberry Pi 5 è dotato di una maggiore capacità di memoria, consentendo agli utenti di eseguire applicazioni più complesse e di archiviare una quantità
+                maggiore di dati. Questo lo rende ideale per progetti che richiedono una gestione intensiva delle risorse o che coinvolgono l'elaborazione di grandi quantità di dati
+                in tempo reale.
                 <br>
-                Dotato di un processore più potente, il Raspberry Pi 5 offre un miglioramento delle prestazioni del 50% rispetto al suo predecessore, consentendo una
-                maggiore fluidità nell'esecuzione di compiti complessi e nel multitasking. Inoltre, la nuova versione supporta la connettività Wi-Fi 6 e Bluetooth 5.2,
-                garantendo una connessione più veloce e affidabile.
+                La facilità d'uso e la vasta comunità di supporto che circonda il Raspberry Pi rendono anche la sua adozione e l'apprendimento relativamente semplici per coloro che
+                sono nuovi nel campo della programmazione e dell'elettronica. Con una vasta gamma di risorse online, tutorial e progetti open source disponibili, anche i principianti
+                possono rapidamente iniziare a sfruttare appieno il potenziale di questo dispositivo innovativo.
                 <br>
-                Con un'ampia gamma di porte e connettori, tra cui HDMI, USB-C e Gigabit Ethernet, il Raspberry Pi 5 è estremamente versatile e adatto a una
-                vasta gamma di progetti, dall'automazione domestica alla robotica, dall'Internet delle cose (IoT) alla programmazione educativa.
-                <br>
-                Grazie alla sua combinazione di prestazioni potenti, dimensioni compatte e prezzo accessibile, il Raspberry Pi 5 continua a essere uno strumento indispensabile per gli appassionati,
-                gli educatori e gli sviluppatori di tutto il mondo.
+                Infine, il Raspberry Pi 5 continua la tradizione della serie nel promuovere l'accessibilità e l'inclusione nell'ambito della tecnologia. Con un prezzo accessibile e
+                una vasta gamma di risorse gratuite disponibili, il Raspberry Pi 5 offre opportunità senza precedenti per l'innovazione e l'apprendimento in tutto il mondo.
             </p>
         </div>
         <div class="w3-col l6">

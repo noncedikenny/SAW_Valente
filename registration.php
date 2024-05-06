@@ -21,18 +21,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if (!empty($_POST["email"])) {
         $email = htmlspecialchars(stripslashes(trim($_POST["email"])));
+        $email = mysqli_real_escape_string($email);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $emailErr = "*Formato di email non valido.";
         }
     }
     if (!empty($_POST["password"])) {
-        $password = htmlspecialchars(stripslashes(trim($_POST["password"])));
-        $hash = password_hash($password, PASSWORD_DEFAULT);
         if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
             $password_err1 = "*La password deve contenere: una lettera maiuscola, una lettera minuscola, un numero ed un carattere speciale.";
         }
         if (strlen($password) < 8) {
             $password_err2 = "*La password deve contenere almeno 8 caratteri.";
+        }
+        if(empty($password_err_1) && empty($password_err_2)) {
+            $password = htmlspecialchars(stripslashes(trim($_POST["password"])));
+            $hash = password_hash($password, PASSWORD_DEFAULT);
         }
     }
     if (!empty($_POST["conf_password"])) {
@@ -44,6 +47,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(empty($username_err) && empty($email_err) && empty($password_err) && empty($conf_password_err) && empty($empty_err)) {
         $_SESSION["username"] = $username;
+
+        // Parametri di connessione al database
+        $servername_db = "localhost"; // Indirizzo del server MySQL
+        $username_db = "root"; // Nome utente del database
+        $password_db = ""; // Password del database
+        $dbname = "saw_cabinets"; // Nome del database
+
+        // Connessione al database
+        $conn = new mysqli($servername_db, $username_db, $password_db, $dbname);
+
+        $username = mysqli_real_escape_string($conn, $username);
+        $email = mysqli_real_escape_string($conn, $email);
+
+        if ($conn->connect_error) {
+            die("Connessione fallita: " . mysqli_connect_error());
+        }
+        $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+
+        // Creazione del prepared statement
+        $stmt = $conn->prepare($sql);
+
+        // Bind dei parametri
+        $stmt->bind_param("sss", $username, $email, $hash);
+
+        $stmt->execute();
+
+        // Chiusura del prepared statement e della connessione
+        $stmt->close();
+        $conn->close();
+
         header("location: index.php");
     }
 }
@@ -75,33 +108,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="username">Username</label> <br>
             <input class="w3-input w3-round-large" type="text" placeholder="Username" id="username" name="username" required="required">
             <span class="error"><?php
-                echo "$username_err";
-                echo "<br>";
+                if(!empty($username_err)) {
+                    echo "$username_err";
+                    echo "<br>";
+                }
                 ?></span>
 
             <!-- Email -->
             <label for="email">Email</label> <br>
             <input class="w3-input w3-round-large" style="text-align: left" type="email" placeholder="Email" id="email" name="email" required="required">
             <span class="error"><?php
-                echo "$email_err";
-                echo "<br>";
+                if(!empty($email_err)) {
+                    echo "$email_err";
+                    echo "<br>";
+                }
                 ?></span>
 
             <!-- Password -->
             <label for="password">Password</label> <br>
             <input class="w3-input w3-round-large" type="password" placeholder="Password" id="password" name="password" required="required">
             <span class="error"><?php
-                echo "$password_err1";
-                echo "$password_err2";
-                echo "<br>";
+                if(!empty($password_err1) || !empty($password_err2)) {
+                    echo "$password_err1";
+                    echo "$password_err2";
+                    echo "<br>";
+                }
                 ?></span>
 
             <!-- Confirm Password -->
             <label for="conf_password">Confirm Password</label>
             <input class="w3-input w3-round-large" type="password" placeholder="Confirm Password" id="conf_password" name="conf_password" required="required">
             <span class="error"><?php
-                echo "$conf_password_err";
-                echo "<br>";
+                if(!empty($conf_password_err)) {
+                    echo "$conf_password_err";
+                    echo "<br>";
+                }
                 ?></span>
 
             <input class="w3-button w3-black w3-round" style="margin: 20px 0 0 0;" type="submit" value="Registrati">
