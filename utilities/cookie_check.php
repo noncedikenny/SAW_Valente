@@ -17,14 +17,16 @@ if (isset($_COOKIE['remember_token'])) {
 
     $cookie = $_COOKIE['remember_token'];
 
-    $sql = "SELECT Username FROM users WHERE Cookie = '$cookie'";
+    $sql = "SELECT Email FROM users WHERE Cookie = '$cookie'";
 
     // Esecuzione della query
     $result = $conn->query($sql);
 
     if($result->num_rows == 1) {
         $row = $result->fetch_assoc();
-        $_SESSION['username'] = $row['Username'];
+        $_SESSION['firstname'] = $row['FirstName'];
+        $_SESSION['lastname'] = $row['LastName'];
+        $_SESSION['email'] = $row['Email'];
     }
 
     // Chiusura della connessione

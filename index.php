@@ -21,10 +21,10 @@
 <main>
     <!-- Sezione Foto -->
     <div style="background-color: grey">
-        <img class="mySlides w3-animate-fading" src="index_photos/ph1.jpg" alt="SliderPhoto1" style="width: 100%;">
-        <img class="mySlides w3-animate-fading" src="index_photos/ph2.jpg" alt="SliderPhoto2" style="width: 100%;">
-        <img class="mySlides w3-animate-fading" src="index_photos/ph3.jpg" alt="SliderPhoto3" style="width: 100%;">
-        <img class="mySlides w3-animate-fading" src="index_photos/ph4.jpg" alt="SliderPhoto4" style="width: 100%;">
+        <img class="mySlides w3-animate-fading" src="photos/index_photos/ph1.jpg" alt="SliderPhoto1" style="width: 100%;">
+        <img class="mySlides w3-animate-fading" src="photos/index_photos/ph2.jpg" alt="SliderPhoto2" style="width: 100%;">
+        <img class="mySlides w3-animate-fading" src="photos/index_photos/ph3.jpg" alt="SliderPhoto3" style="width: 100%;">
+        <img class="mySlides w3-animate-fading" src="photos/index_photos/ph4.jpg" alt="SliderPhoto4" style="width: 100%;">
     </div>
 
     <script>

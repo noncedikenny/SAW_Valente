@@ -37,14 +37,14 @@
             </p>
         </div>
         <div class="w3-col l6" style="margin-top: 50px;">
-            <img src="aboutus_photos/aboutus_team.jpeg" alt="wood_cutting" style="width: 100%;">
+            <img src="photos/aboutus_photos/aboutus_team.jpeg" alt="wood_cutting" style="width: 100%;">
         </div>
     </div>
 
     <!-- Sezione Legno -->
     <div class="w3-row-padding">
         <div class="w3-col l6">
-            <img src="aboutus_photos/aboutus_woodcutting.jpeg" alt="wood_cutting" style="width: 100%;">
+            <img src="photos/aboutus_photos/aboutus_woodcutting.jpeg" alt="wood_cutting" style="width: 100%;">
         </div>
         <div class="w3-col l6">
             <h1 class="w3-center" style="margin: 0;">
@@ -88,7 +88,7 @@
             </p>
         </div>
         <div class="w3-col l6">
-            <img src="aboutus_photos/aboutus_raspberry_pi.png" alt="wood_cutting" style="width: 100%;">
+            <img src="photos/aboutus_photos/aboutus_raspberry_pi.png" alt="wood_cutting" style="width: 100%;">
         </div>
     </div>
 </main>
