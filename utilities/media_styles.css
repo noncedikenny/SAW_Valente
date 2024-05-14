@@ -39,10 +39,3 @@
         margin: 20px auto;
     }
 }
-
-@media screen and (max-width: 1150px) {
-    .product img {
-        width: 100px;
-        height: 100px;
-    }
-}

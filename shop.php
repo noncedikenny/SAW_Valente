@@ -24,7 +24,7 @@
     <div style="margin-bottom: 50px">
         <div class="w3-row-padding" style="margin: 0 auto; width: 75%">
             <div class="w3-card w3-third w3-center w3-padding-32 product">
-                <img src="photos/shop_photos/bartop.png" alt="Bartop" style="width: 250px;"> <br>
+                <img src="photos/shop_photos/bartop.png" alt="Bartop" style="width: 250px; height: 250px;"> <br>
                 <h3>Bartop</h3>
                 <h5>A partire da 400€</h5>
                 <button class="w3-btn w3-green" onclick="addedToCart(event)">Aggiungi al carrello</button>

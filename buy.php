@@ -11,7 +11,6 @@
         <?php include('header.php'); ?>
         
         <div id="buyPopup" class="w3-container w3-padding-32 w3-card-4 w3-light-grey" style="margin: 0 auto;">
-            <span class="w3-right" id="close" style="cursor:pointer">&times;</span>
             <h2 class="w3-center">Riempi il form con i dettagli del tuo prodotto</h2>
             <form id="productForm" class="w3-container">
                 <label>Dimensioni in Altezza:</label>
