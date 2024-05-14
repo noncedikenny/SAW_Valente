@@ -21,7 +21,7 @@
         <h2 style="text-align:center;">Registrati, è gratis.</h2>
         <p style="text-align:center;">Il resto no...</p>
 
-        <form action="scripts/registration.php" method="post">
+        <form action="scripts/registration.php" method="post" id="registrationForm">
             <!-- Nome -->
             <label for="firstname">Nome</label> <br>
             <input class="w3-input w3-round-large" type="text" placeholder="Nome" id="firstname" name="firstname" required="required">
@@ -32,6 +32,8 @@
                     unset($_SESSION['firstname_error']);
                 }
                 ?></span>
+            
+            <p class="error" id="firstname_error"></p>
 
             <!-- Cognome -->
             <label for="lastname">Cognome</label> <br>
@@ -43,6 +45,8 @@
                     unset($_SESSION['lastname_error']);
                 }
                 ?></span>
+            
+            <p class="error" id="lastname_error"></p>
 
             <!-- Email -->
             <label for="email">Email</label> <br>
@@ -54,6 +58,8 @@
                     unset($_SESSION['email_error']);
                 }
                 ?></span>
+            
+            <p class="error" id="email_error"></p>
 
             <!-- Password -->
             <label for="pass">Password <i class="fa fa-eye" onclick="myFunction('pass')"></i></label> <br>
@@ -70,6 +76,8 @@
                     unset($_SESSION['password_error2']);
                 }
                 ?></span>
+            
+            <p class="error" id="password_error"></p>
 
             <!-- Confirm Password -->
             <label for="confirm">Confirm Password <i class="fa fa-eye" onclick="myFunction('confirm')"></i></label> <br>
@@ -81,6 +89,8 @@
                     unset($_SESSION['conf_password_error']);
                 }
                 ?></span>
+            
+            <p class="error" id="confirm_error"></p>
 
             <input class="w3-button w3-black w3-round" style="margin: 20px 0 0 0;" type="submit" value="Registrati">
         </form>
@@ -96,6 +106,8 @@
             }
         }
     </script>
+
+<script src="scripts/registration_form_validation.js" defer></script>
 
 </main>
 

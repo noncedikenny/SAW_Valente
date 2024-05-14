@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
         $conn->close();
 
-        header("location: index.php");
+        header("location: ../index.php");
     }
     else {
         header("Location: ../registration_page.php");

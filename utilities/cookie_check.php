@@ -17,7 +17,7 @@ if (isset($_COOKIE['remember_token'])) {
 
     $cookie = $_COOKIE['remember_token'];
 
-    $sql = "SELECT Email FROM users WHERE Cookie = '$cookie'";
+    $sql = "SELECT * FROM users WHERE Cookie = '$cookie'";
 
     // Esecuzione della query
     $result = $conn->query($sql);

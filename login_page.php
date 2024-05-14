@@ -21,14 +21,14 @@
         <h2 style="text-align:center;">Loggati, è gratis.</h2>
         <p style="text-align:center;">Come registrarsi, il resto non lo è...</p>
 
-        <form action="scripts/login.php" method="post">
-            <!-- Username -->
-            <label for="username">Username</label> <br>
-            <input class="w3-input w3-round-large" type="text" placeholder="Username" id="username" name="username" required="required">
+        <form action="scripts/login.php" method="post" id="loginForm">
+            <!-- Email -->
+            <label for="email">Email</label> <br>
+            <input class="w3-input w3-round-large" type="text" placeholder="Email" id="email" name="email" required="required">
 
             <!-- Password -->
-            <label for="password">Password <i class="fa fa-eye" onclick="myFunction()"></i></label> <br>
-            <input class="w3-input w3-round-large" type="password" placeholder="Password" id="password" name="password" required="required"> <br>
+            <label for="pass">Password <i class="fa fa-eye" onclick="myFunction()"></i></label> <br>
+            <input class="w3-input w3-round-large" type="password" placeholder="Password" id="pass" name="pass" required="required"> <br>
             <span class="error"><?php
                 if(!empty($error)) {
                     echo "$error";
@@ -46,8 +46,8 @@
 
     <script>
         function myFunction() {
-            var x = document.getElementById("password");
-            if (x.type === "password" || x.type === "conf_password") {
+            var x = document.getElementById("pass");
+            if (x.type === "password") {
                 x.type = "text";
             } else {
                 x.type = "password";

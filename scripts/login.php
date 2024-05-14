@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connessione fallita: " . mysqli_connect_error());
         }
 
-        $email = $mysqli_real_escape_string($conn, $email);
+        $email = mysqli_real_escape_string($conn, $email);
         $sql = "SELECT * FROM users WHERE email = '$email'";
         
         // Esecuzione della query
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['firstname'] = $row["FirstName"];
                 $_SESSION['lastname'] = $row["LastName"];
                 $_SESSION['email'] = $row["Email"];
-                header("Location: index.php");
+                header("Location: ../index.php");
             } else {
                 $error = "*Nome utente o password errati.";
             }

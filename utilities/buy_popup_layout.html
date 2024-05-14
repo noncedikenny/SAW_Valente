@@ -1,0 +1,62 @@
+<div id="overlay" style="display: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); z-index: 1;">
+
+<div id="buyPopup" class="w3-container w3-padding-32 w3-card-4 w3-light-grey" style="display: none; margin: 0 auto; width: 50%; z-index: 2; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <span class="w3-right" id="close" style="cursor:pointer">&times;</span>
+    <h2 class="w3-center">Riempi il form con i dettagli del tuo prodotto</h2>
+    <form id="productForm" class="w3-container">
+        <label>Dimensioni in Altezza:</label>
+        <input class="w3-input w3-border" type="number" id="altezza" name="altezza" min="0" step="1">
+        <label>Dimensioni in Lunghezza:</label>
+        <input class="w3-input w3-border" type="number" id="lunghezza" name="lunghezza" min="0" step="1"><br>
+
+        <label>Versione del Raspberry Pi:</label><br>
+        <input class="w3-radio" type="radio" id="rasp4" name="version" value="4">
+        <label>Raspberry Pi 4</label><br>
+        <input class="w3-radio" type="radio" id="rasp400" name="version" value="400">
+        <label>Raspberry Pi 400</label><br>
+        <input class="w3-radio" type="radio" id="rasp5" name="version" value="5">
+        <label>Raspberry Pi 5</label><br><br>
+        
+        <label>Dimensione della MicroSD:</label><br>
+        <input class="w3-radio" type="radio" id="sd64" name="sd64" value="64">
+        <label>64GB</label><br>
+        <input class="w3-radio" type="radio" id="sd128" name="sd128" value="128">
+        <label>128GB</label><br>
+        <input class="w3-radio" type="radio" id="sd256" name="sd256" value="256">
+        <label>256GB</label><br><br>
+
+        <label>Dimensione del Monitor:</label><br>
+        <input class="w3-radio" type="radio" id="monitor20" name="monitor20" value="20">
+        <label>20"</label><br>
+        <input class="w3-radio" type="radio" id="monitor24" name="monitor24" value="24">
+        <label>24"</label><br>
+        <input class="w3-radio" type="radio" id="monitor26" name="monitor26" value="26">
+        <label>26"</label><br><br>
+        
+        <input class="w3-check" type="checkbox" id="usb" name="usb">
+        <label>Hub USB aggiuntiva</label><br>
+        <input class="w3-check" type="checkbox" id="lightgun" name="lightgun">
+        <label>Lightgun</label><br><br>
+
+        <input class="w3-check" type="checkbox" id="payment" name="payment">
+        <label>Usa i dati di pagamento salvati nel profilo</label><br><br>
+
+        <button class="w3-btn w3-blue">Ordina</button>
+    </form>
+</div>
+</div>
+<script>
+    const popup = document.getElementById("buyPopup");
+    const span = document.getElementById("close");
+    const overlay = document.getElementById("overlay");
+    span.onclick = function() {
+        popup.style.display = "none";
+        overlay.style.display = "none";
+        document.documentElement.style.overflow = 'auto';
+        document.body.style.overflow = 'auto';
+        document.documentElement.style.height = 'auto';
+        document.body.style.height = 'auto';
+        document.documentElement.style.margin = 'auto';
+        document.body.style.margin = 'auto';
+    }
+</script>
