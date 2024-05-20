@@ -6,6 +6,14 @@
         </a>
     </div>
 
+    <div class="w3-grey w3-center w3-padding search-container">
+        <form method="GET" action="scripts/search.php">
+            <input type="text" name="query" id="query" placeholder="Cerca nel sito...">
+            <button class="w3-btn" type="submit" id="submitButton"><i class="fas fa-search"></i></button>
+            <p id="emptyInput" style="display: none; color: red;">Input vuoto!</p>
+        </form>
+    </div>
+
     <!-- Navbar -->
     <div class="w3-bar w3-black">
         <?php
@@ -25,3 +33,19 @@
         ?>
     </div>
 </header>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#submitButton').click(function(event) {
+            var inputValue = $('#query').val();
+            if (inputValue === '') {
+                // Se l'input è vuoto, annulla l'invio del modulo
+                event.preventDefault();
+                $('#emptyInput').css({
+                    'display': 'block'
+                });
+            }
+        });
+    });
+</script>

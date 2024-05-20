@@ -6,14 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Quando un utente visita il sito, verifica se ha un token di accesso memorizzato nel browser
 if (isset($_COOKIE['remember_token'])) {
-    // Parametri di connessione al database
-    $servername_db = "localhost"; // Indirizzo del server MySQL
-    $username_db = "root"; // Nome utente del database
-    $password_db = ""; // Password del database
-    $dbname = "saw_cabinets"; // Nome del database
-
-    // Connessione al database
-    $conn = new mysqli($servername_db, $username_db, $password_db, $dbname);
+    include("dbconfig.php");
 
     $cookie = $_COOKIE['remember_token'];
 

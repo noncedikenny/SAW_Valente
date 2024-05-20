@@ -45,6 +45,24 @@
     width: 75%;
 }
 
+.search-container {
+    overflow: hidden; /* Nasconde l'overflow per mantenere il border-radius */
+    width: 75%;
+    margin: 0 auto;
+}
+  
+.search-container input[type="text"] {
+    border: none; /* Rimuove il bordo dell'input */
+    line-height: 1.5; /* Altezza della riga per l'input */
+    padding: 5px 10px; /* Padding interno per l'input */
+    width: 75%;
+}
+
+/* Stilizzazione per gli elementi al focus */
+.search-container input[type="text"]:focus {
+    outline: none; /* Rimuove il contorno al focus */
+}
+
 #buyPopup {
     display: none; 
     margin: 0 auto; 

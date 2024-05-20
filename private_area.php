@@ -35,27 +35,38 @@
 
         <div class="w3-container w3-padding">
 
-            <h3>Cambio dati personali</h3>
-            <form class="w3-container" action="" method="post">
+            <?php
+                $nome = $_SESSION['firstname'];
+                $cognome = $_SESSION['lastname'];
+                $email = $_SESSION['email'];
+            ?>
+
+            <h3>Cambio nome</h3>
+            <form class="w3-container" action="scripts/update_profile.php" method="post">
                 <label for="firstname">Nuovo Nome:</label><br>
-                <input class="w3-input w3-border w3-light-grey" type="text" id="firstname" name="firstname">
+                <input class="w3-input w3-border w3-light-grey" type="text" id="firstname" name="firstname" value="<?php echo $nome ?>">
+                <input class="w3-btn w3-blue" type="submit" value="Cambia">
+            </form>
+
+            <h3>Cambio cognome</h3>
+            <form class="w3-container" action="scripts/update_profile.php" method="post">
                 <label for="lastname">Nuovo Cognome:</label><br>
-                <input class="w3-input w3-border w3-light-grey" type="text" id="lastname" name="lastname">
-                <input class="w3-btn w3-blue" type="submit" value="Modifica Dati">
+                <input class="w3-input w3-border w3-light-grey" type="text" id="lastname" name="lastname" value="<?php echo $cognome ?>">
+                <input class="w3-btn w3-blue" type="submit" value="Cambia">
             </form>
 
             <h3>Cambio email</h3>
-            <form class="w3-container" action="" method="post">
+            <form class="w3-container" action="scripts/update_profile.php" method="post">
                 <label for="email">Nuova Email:</label><br>
-                <input class="w3-input w3-border w3-light-grey" type="email" id="email" name="email">
-                <input class="w3-btn w3-blue" type="submit" value="Modifica Dati">
+                <input class="w3-input w3-border w3-light-grey" type="email" id="email" name="email" value="<?php echo $email ?>">
+                <input class="w3-btn w3-blue" type="submit" value="Cambia">
             </form>
 
             <h3>Cambio password</h3>
-            <form class="w3-container" action="" method="post">
+            <form class="w3-container" action="scripts/update_profile.php" method="post">
                 <label for="pass">Nuova Password:</label><br>
                 <input class="w3-input w3-border w3-light-grey" type="password" id="pass" name="pass">
-                <input class="w3-btn w3-blue" type="submit" value="Modifica Dati">
+                <input class="w3-btn w3-blue" type="submit" value="Cambia">
             </form>
 
         </div>

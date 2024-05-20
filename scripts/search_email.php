@@ -2,14 +2,7 @@
 
 if (isset($_GET['email'])) { 
 
-    // Parametri di connessione al database
-    $servername_db = "localhost";                       // Indirizzo del server MySQL
-    $username_db = "root";                              // Nome utente del database
-    $password_db = "";                                  // Password del database
-    $dbname = "saw_cabinets";                           // Nome del database
-
-    // Connessione al database
-    $conn = new mysqli($servername_db, $username_db, $password_db, $dbname);
+    include("../utilities/dbconfig.php");
 
     // Sanitizza l'email per evitare injection attacks
     $email = mysqli_real_escape_string($conn, $_GET['email']); 

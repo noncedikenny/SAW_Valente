@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $email = $password = "";
 $error = "";
 $hash = "";
@@ -7,24 +9,14 @@ $thereIsAnError = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty($_POST["email"] || $_POST["pass"])) {
         $error = "*Compila tutti i campi.";
+        $_SESSION['error'] = $error;
         $thereIsAnError = true;
     }
     else {
         $email = htmlspecialchars(stripslashes(trim($_POST["email"])));
         $password = htmlspecialchars(stripslashes(trim($_POST["pass"])));
 
-        // Parametri di connessione al database
-        $servername_db = "localhost";                       // Indirizzo del server MySQL
-        $username_db = "root";                              // Nome utente del database
-        $password_db = "";                                  // Password del database
-        $dbname = "saw_cabinets";                           // Nome del database
-
-        // Connessione al database
-        $conn = new mysqli($servername_db, $username_db, $password_db, $dbname);
-
-        if($conn->connect_error) {
-            die("Connessione fallita: " . mysqli_connect_error());
-        }
+        include("../utilities/dbconfig.php");
 
         $email = mysqli_real_escape_string($conn, $email);
         $sql = "SELECT * FROM users WHERE email = '$email'";
@@ -55,11 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['email'] = $row["Email"];
                 header("Location: ../index.php");
             } else {
-                $error = "*Nome utente o password errati.";
+                $error = "*Email o password errati.";
+                $_SESSION['error'] = $error;
+                header("Location: ../login_page.php");
             }
         }
         else {
-            $error = "*Nome utente o password errati.";
+            $error = "*Email o password errati.";
+            $_SESSION['error'] = $error;
+            header("Location: ../login_page.php");
         }
 
         // Chiusura della connessione

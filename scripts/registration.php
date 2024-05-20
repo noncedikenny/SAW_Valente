@@ -70,22 +70,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["lastname"] = $lastname;
         $_SESSION["email"] = $email;
 
-        // Parametri di connessione al database
-        $servername_db = "localhost";                       // Indirizzo del server MySQL
-        $username_db = "root";                              // Nome utente del database
-        $password_db = "";                                  // Password del database
-        $dbname = "saw_cabinets";                           // Nome del database
-
-        // Connessione al database
-        $conn = new mysqli($servername_db, $username_db, $password_db, $dbname);
+        include("../utilities/dbconfig.php");
 
         $firstname = mysqli_real_escape_string($conn, $firstname);
         $lastname = mysqli_real_escape_string($conn, $lastname);
         $email = mysqli_real_escape_string($conn, $email);
 
-        if ($conn->connect_error) {
-            die("Connessione fallita: " . mysqli_connect_error());
-        }
         $sql = "INSERT INTO users (FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?)";
 
         // Creazione del prepared statement

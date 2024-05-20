@@ -14,7 +14,7 @@
 
 <body>
 
-<?php include('header.php'); ?>
+<?php include('header.php'); session_start(); ?>
 
 <main>
     <div class="w3-container w3-card form-container">
@@ -27,12 +27,13 @@
             <input class="w3-input w3-round-large" type="text" placeholder="Email" id="email" name="email" required="required">
 
             <!-- Password -->
-            <label for="pass">Password <i class="fa fa-eye" onclick="myFunction()"></i></label> <br>
-            <input class="w3-input w3-round-large" type="password" placeholder="Password" id="pass" name="pass" required="required"> <br>
+            <label for="pass">Password <i class="fa fa-eye" id="togglePasswordVisibility"></i></label> <br>
+            <input class="w3-input w3-round-large" type="password" placeholder="Password" id="pass" name="pass" required="required">
             <span class="error"><?php
-                if(!empty($error)) {
-                    echo "$error";
+                if(isset($_SESSION['error'])) {
+                    echo "{$_SESSION['error']}";
                     echo "<br>";
+                    unset($_SESSION['error']);
                 }
                 ?></span>
 
@@ -45,14 +46,12 @@
     </div>
 
     <script>
-        function myFunction() {
-            var x = document.getElementById("pass");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
+        $(document).ready(function() {
+            $('#togglePasswordVisibility').on('click', function() {
+                var $pass = $('#pass');
+                $pass.attr('type', $pass.attr('type') === 'password' ? 'text' : 'password');
+            });
+        });
     </script>
 </main>
 
