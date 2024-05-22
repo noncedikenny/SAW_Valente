@@ -96,44 +96,44 @@
                 <img src="photos/shop_photos/kit di pulsanti.png" alt="Pulsanti"> <br>
                 <h3>Kit di Pulsanti</h3>
                 <h5>20€</h5>
-                <button class="w3-btn w3-green" onclick="addToCart(event)">Ordina</button>
+                <?php
+                    if (isset($_SESSION['firstname'])) {
+                        echo "<button class='w3-btn w3-green' onclick='addToCart(\"{$_SESSION['email']}\", \"Pulsanti\", 20)'>Aggiungi al carrello</button>";
+                    }
+                    else {
+                        echo "<button class='w3-btn w3-green' onclick='window.location.replace(\"login_page.php\");'>Loggati per acquistare</button>";
+                    }
+                ?>
             </div>
             <div class="w3-card w3-third w3-center w3-padding-32 product">
                 <img src="photos/shop_photos/volante.png" alt="Volante"> <br>
                 <h3>Volante</h3>
                 <h5>50€</h5>
-                <button class="w3-btn w3-green" onclick="addToCart(event)">Ordina</button>
+                <?php 
+                    if (isset($_SESSION['firstname'])) {
+                        echo "<button class='w3-btn w3-green' onclick='addToCart(\"{$_SESSION['email']}\", \"Volante\", 10)'>Aggiungi al carrello</button>";
+                    }
+                    else {
+                        echo "<button class='w3-btn w3-green' onclick='window.location.replace(\"login_page.php\");'>Loggati per acquistare</button>";
+                    }
+                ?>
             </div>
             <div class="w3-card w3-third w3-center w3-padding-32 product">
                 <img src="photos/shop_photos/custom_cabinet.png" alt="Stickers"> <br>
                 <h3>Stickers</h3>
                 <h5>A partire da 10€ a 30€</h5>
-                <button class="w3-btn w3-green" onclick="showPopup(event)">Ordina</button>
+                <button class="w3-btn w3-green" onclick="window.location.replace('aboutus.php');">Contatti</button>
             </div>
         </div>
     </div>
 
-    <a href="#"><img id="cart-img" src="photos/shop_photos/cart_photo.png" alt="Shopping Cart"></a>
-
-    <script>
-        $(document).ready(function() {
-            $("button").filter(function() {
-                return $(this).text() === "Ordina";
-            }).click(function() {
-                var $popup = $("#buyPopup");
-                var $overlay = $("#overlay");
-                $popup.show();
-                $overlay.show();
-
-                $('html, body').css({
-                    'overflow': 'hidden',
-                    'height': '100%',
-                    'margin': '0'
-                });
-            });
-        });
-    </script>
-
+    <?php
+        if(isset($_SESSION['firstname'])) {
+            echo "<a href='cart.php'><img id='cart-img' src='photos/shop_photos/cart_photo.png' alt='Shopping Cart'></a>";
+        }
+    ?>
+    <script src="scripts/show_hide_popup.js"></script>
+    <script src="scripts/cart_logic.js"></script>
 </main>
 </body>
 

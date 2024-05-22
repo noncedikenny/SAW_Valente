@@ -17,7 +17,7 @@
     <!-- Navbar -->
     <div class="w3-bar w3-black">
         <?php
-        if(isset($_SESSION['firstname']) && $_SESSION['lastname']) {
+        if(isset($_SESSION['firstname'])) {
             echo '<a href="aboutus.php" class="w3-bar-item w3-button w3-mobile" style="width:25%">Chi Siamo?</a>';
             echo '<a href="shop.php" class="w3-bar-item w3-button w3-mobile" style="width:25%">Catalogo</a>';
             echo '<a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">FAQ</a>';
@@ -34,7 +34,6 @@
     </div>
 </header>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#submitButton').click(function(event) {

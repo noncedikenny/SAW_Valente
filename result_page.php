@@ -8,9 +8,15 @@
 
     <style>
         #search-result {
-            border: 1px solid;
-            width: 50%; 
-            margin: 10px auto;
+            width: 50%;
+            margin: auto;
+        }
+        #search-result img {
+            max-width: 100%;
+            height: auto;
+        }
+        #search-result:hover {
+            cursor: pointer;
         }
     </style>
 
@@ -29,12 +35,16 @@
             $result = $_SESSION['result'] ?? null;
             if (isset($_SESSION['result'])) {
                 $resultsArray = $_SESSION['result'];
+                echo "<div class='w3-row-padding product-container' style='margin: 0 auto;'>";
                 foreach ($resultsArray as $row) {
-                    echo "<div class='w3-center' id='search-result'>";
-                    echo "<img src='photos/shop_photos/". $row['name'] . ".png' alt='Prodotto' style='width: 10%'> <h2>" . $row['name'] . ": " . $row['price'] . "€ </h2>";
+                    echo "<div class='w3-card w3-third w3-center w3-padding-32 product'>";
+                    echo "<div id='search-result' onclick='window.location.replace(\"shop.php\");'>";
+                    echo "<img src='photos/shop_photos/". $row['name'] . ".png' alt='Prodotto' class='w3-image' style='width: 80%'> <h2>" . $row['name'] . ": " . $row['price'] . "€ </h2>";
+                    echo "</div>";
                     echo "</div>";
                 }
-                if(empty($resultsArray)) {
+                echo "</div>";
+                if (empty($resultsArray)) {
                     include('utilities/no_result.html');
                 }
             } else {

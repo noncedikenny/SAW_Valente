@@ -16,4 +16,10 @@ $conn->query($sql);
 // Chiusura dello statement e della connessione
 $conn->close();
 
+echo '<script src="cart_logic.js">';
+    echo "document.addEventListener('DOMContentLoaded', (event) => {";
+        echo "clearCart(\"{$_SESSION['email']}\");";
+    echo '});';
+echo '</script>';
+
 include('logout.php');

@@ -12,54 +12,54 @@
         <input class="w3-input w3-border" type="number" id="lunghezza" name="lunghezza" min="0" step="1"><br>
 
         <label>Versione del Raspberry Pi:</label><br>
-        <input class="w3-radio" type="radio" id="rasp4" name="rasp_version" value="4">
+        <input class="w3-radio" type="radio" id="rasp4" name="rasp_version" value="4" data-price="50">
         <label>Raspberry Pi 4</label>
         <span id="rasp4_price" class="w3-right" style="display: none; color: green;">+50€</span>
         <br>
 
-        <input class="w3-radio" type="radio" id="rasp400" name="rasp_version" value="400">
+        <input class="w3-radio" type="radio" id="rasp400" name="rasp_version" value="400" data-price="100">
         <label>Raspberry Pi 400</label>
         <span id="rasp400_price" class="w3-right" style="display: none; color: green;">+100€</span>
         <br>
 
-        <input class="w3-radio" type="radio" id="rasp5" name="rasp_version" value="5">
+        <input class="w3-radio" type="radio" id="rasp5" name="rasp_version" value="5" data-price="120">
         <label>Raspberry Pi 5</label>
         <span id="rasp5_price" class="w3-right" style="display: none; color: green;">+120€</span>
         <br><br>
 
         <label>Dimensione della MicroSD:</label><br>
-        <input class="w3-radio" type="radio" id="sd64" name="sd_size" value="64">
+        <input class="w3-radio" type="radio" id="sd64" name="sd_size" value="64" data-price="15">
         <label>64GB</label>
         <span id="sd64_price" class="w3-right" style="display: none; color: green;">+15€</span>
         <br>
         
-        <input class="w3-radio" type="radio" id="sd128" name="sd_size" value="128">
+        <input class="w3-radio" type="radio" id="sd128" name="sd_size" value="128" data-price="25">
         <label>128GB</label>
         <span id="sd128_price" class="w3-right" style="display: none; color: green;">+25€</span>
         <br>
 
-        <input class="w3-radio" type="radio" id="sd256" name="sd_size" value="256">
+        <input class="w3-radio" type="radio" id="sd256" name="sd_size" value="256" data-price="35">
         <label>256GB</label>
         <span id="sd256_price" class="w3-right" style="display: none; color: green;">+35€</span>
         <br><br>
 
         <label>Dimensione del Monitor:</label><br>
-        <input class="w3-radio" type="radio" id="monitor20" name="monitor_size" value="20">
+        <input class="w3-radio" type="radio" id="monitor20" name="monitor_size" value="20" data-price="80">
         <label>20"</label>
         <span id="monitor20_price" class="w3-right" style="display: none; color: green;">+80€</span>
         <br>
 
-        <input class="w3-radio" type="radio" id="monitor24" name="monitor_size" value="24">
+        <input class="w3-radio" type="radio" id="monitor24" name="monitor_size" value="24" data-price="90">
         <label>24"</label>
         <span id="monitor24_price" class="w3-right" style="display: none; color: green;">+90€</span>
         <br>
         
-        <input class="w3-radio" type="radio" id="monitor26" name="monitor_size" value="26">
+        <input class="w3-radio" type="radio" id="monitor26" name="monitor_size" value="26" data-price="100">
         <label>26"</label>
         <span id="monitor26_price" class="w3-right" style="display: none; color: green;">+100€</span>
         <br><br>
         
-        <input class="w3-check" type="checkbox" id="usb" name="usb">
+        <input class="w3-check" type="checkbox" id="usb" name="usb" data-price="15">
         <label>Hub USB aggiuntiva</label>
         <span id="usb_price" class="w3-right" style="display: none; color: green;">+15€</span>
         <br>
@@ -69,97 +69,10 @@
         <span id="lightgun_price" class="w3-right" style="display: none; color: green;">+100€</span>
         <br><br>
 
-        <input class="w3-check" type="checkbox" id="payment" name="payment" checked>
-        <label>Usa i dati di pagamento salvati nel profilo</label><br><br>
-
-        <div id="payment_methods" style="display: none;">
-            <fieldset>
-                <legend>Informazioni di pagamento</legend>
-
-                <label>Nome del proprietario della carta</label>
-                <input class="w3-input w3-border" type="text" id="owner" name="owner">
-
-                <label>Numero della carta</label>
-                <input class="w3-input w3-border" type="text" id="cardNumber" name="cardNumber">
-
-                <label>Data di scadenza (MM/AA)</label>
-                <input class="w3-input w3-border" type="text" id="expiryDate" name="expiryDate">
-
-                <label>Codice di Sicurezza (CVV)</label>
-                <input class="w3-input w3-border" type="text" id="cvv" name="cvv">
-            </fieldset>
-
-            <fieldset>
-                <legend>Indirizzo di fatturazione</legend>
-
-                <label>Nome</label>
-                <input class="w3-input w3-border" type="text" id="billingName" name="billingName">
-
-                <label>Indirizzo</label>
-                <input class="w3-input w3-border" type="text" id="billingAddress" name="billingAddress">
-
-                <label>Città</label>
-                <input class="w3-input w3-border" type="text" id="city" name="city">
-
-                <label>Stato</label>
-                <input class="w3-input w3-border" type="text" id="state" name="state">
-
-                <label>Codice postale</label>
-                <input class="w3-input w3-border" type="text" id="zip" name="zip">
-
-                <label>Paese</label>
-                <input class="w3-input w3-border" type="text" id="country" name="country">
-            </fieldset>
-        </div>
-
-        <br>
-
         <button class="w3-btn w3-blue">Ordina</button>
     </form>
 </div>
 </div>
-<script>
-    $(document).ready(function() {
-        var $popup = $("#buyPopup");
-        var $overlay = $("#overlay");
 
-        $("#close").click(function() {
-            $popup.hide();
-            $overlay.hide();
-            $('html, body').css({
-                'overflow': 'auto',
-                'height': 'auto',
-                'margin': 'auto'
-            });
-        });
-
-        $("#payment").change(function() {
-            $("#payment_methods").css('display', this.checked ? 'none' : 'block');
-        });
-    });
-</script>
-
-<script>
-    function hidePrices(groupName) {
-        $(`#productForm input[name=${groupName}]`).each(function() {
-            $(`#${this.id}_price`).hide();
-        });
-    }
-
-    function addRadioEventListeners(groupName) {
-        $(`#productForm input[name=${groupName}]`).on('change', function() {
-            hidePrices(groupName);
-            $(`#${this.id}_price`).show();
-        });
-    }
-
-    // Aggiungi gli event listeners ai tuoi gruppi
-    addRadioEventListeners('rasp_version');
-    addRadioEventListeners('sd_size');
-    addRadioEventListeners('monitor_size');
-
-    // Fai lo stesso con le checkbox come prima
-    $('#productForm input[type=checkbox]').on('change', function() {
-        $(`#${this.id}_price`).css('display', this.checked ? 'block' : 'none');
-    });
-</script>
+<script src="scripts/show_hide_popup.js"></script>
+<script src="cart_logic.js"></script>

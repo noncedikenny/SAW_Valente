@@ -29,7 +29,10 @@
                 <a href="#" style="text-decoration: none">Notifiche</a> |
                 <a href="#" style="text-decoration: none">Lingua</a> |
                 <a href="scripts/logout.php" style="text-decoration: none">Logout</a> |
+                <!--
                 <a href="scripts/delete_account.php" style="color: red; text-decoration: none">Elimina account</a>
+                -->
+                <?php echo "<a href='scripts/delete_account.php' style='color: red; text-decoration: none' onclick='clearCart(\"{$_SESSION['email']}\")'>Elimina l'Account</a>"; ?>
             </nav>
         </div>
 
@@ -73,6 +76,8 @@
     </div>
 
 </main>
+
+<script src="scripts/cart_logic.js"></script>
 
 <?php include('footer.html'); ?>
 
