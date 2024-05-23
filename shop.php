@@ -29,7 +29,7 @@
 
 <body>
     <?php include('header.php'); ?>
-    <?php include('utilities/buy_popup_layout.html'); ?>
+    <?php include('utilities/buy_popup_layout.php'); ?>
 
 <main>
 
@@ -45,19 +45,19 @@
                 <img src="photos/shop_photos/bartop.png" alt="Bartop"> <br>
                 <h3>Bartop</h3>
                 <h5>A partire da 400€</h5>
-                <button class="w3-btn w3-green" onclick="showPopup(event)">Ordina</button>
+                <button class="w3-btn w3-green" data-product="Bartop" data-price="400">Ordina</button>
             </div>
             <div class="w3-card w3-third w3-center w3-padding-32 product">
                 <img src="photos/shop_photos/quattro giocatori.png" alt="Quattro Giocatori"> <br>
                 <h3>Quattro Giocatori</h3>
                 <h5>A partire da 700€</h5>
-                <button class="w3-btn w3-green" onclick="showPopup(event)">Ordina</button>
+                <button class="w3-btn w3-green" data-product="Quattro Giocatori" data-price="700">Ordina</button>
             </div>
             <div class="w3-card w3-third w3-center w3-padding-32 product">
                 <img src="photos/shop_photos/classico.png" alt="Classico"> <br>
                 <h3>Classico</h3>
                 <h5>A partire da 600€</h5>
-                <button class="w3-btn w3-green" onclick="showPopup(event)">Ordina</button>
+                <button class="w3-btn w3-green" data-product="Classico" data-price="600">Ordina</button>
             </div>
         </div>
 
@@ -67,13 +67,13 @@
                 <img src="photos/shop_photos/a muro.png" alt="A Muro"> <br>
                 <h3>A muro</h3>
                 <h5>A partire da 500€</h5>
-                <button class="w3-btn w3-green" onclick="showPopup(event)">Ordina</button>
+                <button class="w3-btn w3-green" data-product="A muro" data-price="500">Ordina</button>
             </div>
             <div class="w3-card w3-third w3-center w3-padding-32 product">
                 <img src="photos/shop_photos/racing.png" alt="Racing"> <br>
                 <h3>Racing</h3>
                 <h5>A partire da 1000€</h5>
-                <button class="w3-btn w3-green" onclick="showPopup(event)">Ordina</button>
+                <button class="w3-btn w3-green" data-product="Racing" data-price="1000">Ordina</button>
             </div>
             <div class="w3-card w3-third w3-center w3-padding-32 product">
                 <img src="photos/shop_photos/custom_cabinet.png" alt="Personalizzato"> <br>
