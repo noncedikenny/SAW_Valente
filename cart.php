@@ -18,6 +18,7 @@
             echo '<div class="w3-container" style="margin: 30px;">';
             echo '<h2>Il tuo carrello</h2>';
             echo '<div id="cart-items" class="w3-margin w3-padding w3-card-4"></div>';
+            echo '<h4 id="showTotalPrice"></h4>';
             echo "<button class='w3-button w3-green' onclick='clearCart(\"{$_SESSION['email']}\")'>Completa l'ordine</button>";
             echo "<button class='w3-button w3-red w3-right' onclick='clearCart(\"{$_SESSION['email']}\")'>Svuota carrello</button>";
             echo '<a href="shop.php" class="w3-button w3-blue">Continua lo shopping</a>';

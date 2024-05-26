@@ -10,16 +10,17 @@ if (isset($_COOKIE['remember_token'])) {
 
     $cookie = $_COOKIE['remember_token'];
 
-    $sql = "SELECT * FROM users WHERE Cookie = '$cookie'";
+    $sql = "SELECT * FROM users WHERE Cookie IS NOT NULL";
 
     // Esecuzione della query
     $result = $conn->query($sql);
 
-    if($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        $_SESSION['firstname'] = $row['FirstName'];
-        $_SESSION['lastname'] = $row['LastName'];
-        $_SESSION['email'] = $row['Email'];
+    while ($row = $result->fetch_assoc()) {
+        if (password_verify($cookie, $row['Cookie']) && strtotime($row['CookieExpiration']) > time()) {
+            $_SESSION['firstname'] = $row['FirstName'];
+            $_SESSION['lastname'] = $row['LastName'];
+            $_SESSION['email'] = $row['Email'];
+        }
     }
 
     // Chiusura della connessione

@@ -6,9 +6,9 @@ if (session_status() === PHP_SESSION_NONE) {
 
 if (isset($_COOKIE['remember_token'])) {
     unset($_COOKIE['remember_token']); 
-    setcookie('remember_token', '', -1, '/'); 
+    setcookie('remember_token', '', time() - 3600, "/");
 }
 
-session_unset();
+$_SESSION = array();
 session_destroy();
 header('Location: ../index.php');

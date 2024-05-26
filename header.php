@@ -1,3 +1,9 @@
+<?php 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
+
 <header class="w3-grey" style="padding: 1px;">
     <!-- Logo -->
     <div class="w3-image w3-center logo-container">

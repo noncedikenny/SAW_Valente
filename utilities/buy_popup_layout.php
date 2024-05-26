@@ -3,14 +3,16 @@
         <span class="w3-right" id="close" style="cursor:pointer">&times;</span>
         <h2 class="w3-center">Riempi il form con i dettagli del tuo prodotto</h2>
 
+        <div id="errorMessage" class="w3-text-red w3-center" style="display: none;"></div>
+
         <form id="productForm" class="w3-container">
             <h3 id="showSelectedProductName"></h3>
             <h4 id="basePrice"></h4>
 
             <label>Dimensioni in Altezza (cm):</label>
-            <input class="w3-input w3-border" type="number" id="altezza" name="altezza" min="100" step="1" required="required">
+            <input class="w3-input w3-border" type="number" id="height" name="height" min="100" step="1" required="required">
             <label>Dimensioni in Lunghezza (cm):</label>
-            <input class="w3-input w3-border" type="number" id="lunghezza" name="lunghezza" min="30" step="1" required="required"><br>
+            <input class="w3-input w3-border" type="number" id="width" name="width" min="30" step="1" required="required"><br>
 
             <label>Versione del Raspberry Pi:</label><br>
             <input class="w3-radio" type="radio" id="rasp4" name="rasp_version" value="4" data-price="50">
@@ -87,4 +89,3 @@
 </div>
 
 <script src="scripts/show_hide_popup.js"></script>
-<script src="cart_logic.js"></script>

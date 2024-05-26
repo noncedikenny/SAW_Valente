@@ -14,7 +14,7 @@
 
 <body>
 
-<?php include('header.php'); session_start(); ?>
+<?php include('header.php'); ?>
 
 <main>
     <div class="w3-container w3-card form-container">
