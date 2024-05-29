@@ -6,15 +6,17 @@ if (session_status() === PHP_SESSION_NONE) {
 $email = $password = "";
 $error = "";
 $hash = "";
-$thereIsAnError = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Something's empty
     if(empty($_POST["email"] || $_POST["pass"])) {
         $error = "*Compila tutti i campi.";
         $_SESSION['error'] = $error;
-        $thereIsAnError = true;
     }
+
+
     else {
+        // Sanitize inputs
         $email = htmlspecialchars(stripslashes(trim($_POST["email"])));
         $password = htmlspecialchars(stripslashes(trim($_POST["pass"])));
 
@@ -23,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = mysqli_real_escape_string($conn, $email);
         $sql = "SELECT * FROM users WHERE email = '$email'";
         
-        // Esecuzione della query
+        // Query execution
         $result = $conn->query($sql);
 
         if($result->num_rows == 1) {
@@ -32,21 +34,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (password_verify($password, $stored_password)) {
                 if (isset($_POST['remember_me'])) {
-                    // Genera un token di accesso univoco
+                    // Generate a unique access token
                     $token = bin2hex(random_bytes(16));
                     $expiration = date('Y-m-d H:i:s', time() + (86400 * 30));
                     
-                    // Salva il token come cookie nel browser dell'utente
+                    // Saves the token as a cookie in the user's browser
                     setcookie('remember_token', $token, time() + (86400 * 30), "/");
 
+                    // Encrypt the cookie and save it crypted on the database
                     $crypted_token = password_hash($token, PASSWORD_DEFAULT);
-
                     $sql = "UPDATE users SET Cookie = '$crypted_token' WHERE Email = '$email';";
                     $conn->query($sql);
                     $sql = "UPDATE users SET CookieExpiration = '$expiration' WHERE Email = '$email';";
                     $conn->query($sql);
                 }
 
+                // Set session's variables
                 $_SESSION['firstname'] = $row["FirstName"];
                 $_SESSION['lastname'] = $row["LastName"];
                 $_SESSION['email'] = $row["Email"];
@@ -63,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../login_page.php");
         }
 
-        // Chiusura della connessione
+        // Closing the connection
         $conn->close();
     }
 }

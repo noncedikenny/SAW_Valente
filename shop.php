@@ -145,7 +145,7 @@
     </div>
 
     <?php
-        if(isset($_SESSION['firstname'])) {
+        if(isset($_SESSION['email'])) {
             echo "<a href='cart.php'><img id='cart-img' src='photos/shop_photos/cart_photo.png' alt='Shopping Cart'></a>";
         }
     ?>

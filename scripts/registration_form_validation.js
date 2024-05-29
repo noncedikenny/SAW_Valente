@@ -1,83 +1,99 @@
-const firstname = document.getElementById('firstname');
-const lastname = document.getElementById('lastname');
-const email = document.getElementById('email');
-const password = document.getElementById('pass');
-const conf_pass = document.getElementById('confirm');
+$(document).ready(function() {
+    // Cache jQuery selectors
+    const $firstname = $('#firstname');
+    const $lastname = $('#lastname');
+    const $email = $('#email');
+    const $password = $('#pass');
+    const $conf_pass = $('#confirm');
+    
+    const $firstname_error = $('#firstname_error');
+    const $lastname_error = $('#lastname_error');
+    const $email_error = $('#email_error');
+    const $password_error = $('#password_error');
+    const $confirm_error = $('#confirm_error');
 
-const firstname_error = document.getElementById('firstname_error');
-const lastname_error = document.getElementById('lastname_error'); // Correggi il nome dell'elemento di errore del cognome
-const email_error = document.getElementById('email_error');
-const password_error = document.getElementById('password_error');
-const confirm_error = document.getElementById('confirm_error');
+    // Event listeners using jQuery
+    $firstname.on('input', function() {
+        validateName($firstname.val(), $firstname_error);
+    });
 
-firstname.addEventListener('input', () => validateName(firstname.value, firstname_error));
-lastname.addEventListener('input', () => validateName(lastname.value, lastname_error));
-email.addEventListener('input', validateEmail);
-password.addEventListener('input', validatePassword);
-conf_pass.addEventListener('input', validateConf);
+    $lastname.on('input', function() {
+        validateName($lastname.val(), $lastname_error);
+    });
 
-function validateName(name, errorField) {
-    const regex = /^[a-zA-Z]+$/;
-    if (!regex.test(name)) {
-        errorField.innerHTML = 'È possibile inserire solo lettere o numeri.';
-    } else {
-        errorField.innerHTML = '';
-    }
-}
+    $email.on('input', validateEmail);
+    $password.on('input', validatePassword);
+    $conf_pass.on('input', validateConf);
 
-function validateEmail() {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email.value)) {
-        email_error.innerHTML = 'Email non valida.';
-    } else {
-        fetch('scripts/search_email.php?email=' + encodeURIComponent(email.value))
-            .then(response => response.json())
-            .then(data => {
-                if (data.exists) {
-                    email_error.innerHTML = 'Email già registrata.';
-                } else {
-                    email_error.innerHTML = '';
-                }
-            })
-            .catch(error => console.error('Errore:', error));
+    // Function to validate name
+    function validateName(name, $errorField) {
+        const regex = /^[a-zA-Z ]+$/;
+        if (!regex.test(name)) {
+            $errorField.html('È possibile inserire solo lettere o numeri.');
+        } else {
+            $errorField.html('');
+        }
     }
-}
 
-function validatePassword() {
-    if (password.value.length < 8) {
-        password_error.innerHTML = 'La password deve contenere almeno 8 caratteri';
+    // Function to validate email
+    function validateEmail() {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test($email.val())) {
+            $email_error.html('Email non valida.');
+        } else {
+            $.getJSON('scripts/search_email.php', { email: $email.val() })
+                .done(function(data) {
+                    if (data.exists) {
+                        $email_error.html('Email già registrata.');
+                    } else {
+                        $email_error.html('');
+                    }
+                })
+                .fail(function(error) {
+                    console.error('Errore:', error);
+                });
+        }
     }
-    const password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (!password_regex.test(password.value)) {
-        password_error.innerHTML = 'La password deve contenere otto caratteri, almeno: una lettera maiuscola, una lettera minuscola, un numero ed un carattere speciale.';
-    } else {
-        password_error.innerHTML = '';
-    }
-}
 
-function validateConf() {
-    if (password.value !== conf_pass.value || conf_pass.value === '') {
-        confirm_error.innerHTML = 'Le password non coincidono o la conferma della password è vuota.';
+    // Function to validate password
+    function validatePassword() {
+        if ($password.val().length < 8) {
+            $password_error.html('La password deve contenere almeno 8 caratteri');
+        }
+        const password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!password_regex.test($password.val())) {
+            $password_error.html('La password deve contenere otto caratteri, almeno: una lettera maiuscola, una lettera minuscola, un numero ed un carattere speciale.');
+        } else {
+            $password_error.html('');
+        }
     }
-    else {
-        confirm_error.innerHTML = '';
-    }
-}
 
-function validateForm() {
-    validateName(firstname.value, firstname_error);
-    validateName(lastname.value, lastname_error);
-    validateEmail();
-    validatePassword();
-    validateConf();
-    if (firstname_error.textContent || lastname_error.textContent || email_error.textContent || password_error.textContent || confirm_error.textContent) {
-        return false;
+    // Function to validate password confirmation
+    function validateConf() {
+        if ($password.val() !== $conf_pass.val() || $conf_pass.val() === '') {
+            $confirm_error.html('Le password non coincidono o la conferma della password è vuota.');
+        } else {
+            $confirm_error.html('');
+        }
     }
-    return true;
-}
 
-document.getElementById("registrationForm").addEventListener('submit', function(event) {
-    if (!validateForm()) {
-        event.preventDefault();
+    // Function to validate the form before submission
+    function validateForm() {
+        validateName($firstname.val(), $firstname_error);
+        validateName($lastname.val(), $lastname_error);
+        validateEmail();
+        validatePassword();
+        validateConf();
+        if ($firstname_error.text() || $lastname_error.text() || $email_error.text() || $password_error.text() || $confirm_error.text()) {
+            return false;
+        }
+        return true;
     }
+
+    // Form submission event listener
+    $("#registrationForm").on('submit', function(event) {
+        if (!validateForm()) {
+            event.preventDefault();
+        }
+    });
 });

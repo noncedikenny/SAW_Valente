@@ -13,8 +13,8 @@
     <?php include('header.php'); ?>
 
 <main>
-    <?php 
-        if(isset($_SESSION['firstname'])) {
+    <?php
+        if(isset($_SESSION['email'])) {
             echo '<div class="w3-container" style="margin: 30px;">';
             echo '<h2>Il tuo carrello</h2>';
             echo '<div id="cart-items" class="w3-margin w3-padding w3-card-4"></div>';
@@ -33,13 +33,11 @@
     ?>
 </main>
 
-<?php
-echo '<script>';
-    echo "document.addEventListener('DOMContentLoaded', (event) => {";
-        echo "displayCart(\"{$_SESSION['email']}\");";
-    echo '});';
-echo '</script>';
-?>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        displayCart("<?php echo $_SESSION['email'] ?>");
+    });
+</script>
 
 <script src="scripts/cart_logic.js"></script>
 

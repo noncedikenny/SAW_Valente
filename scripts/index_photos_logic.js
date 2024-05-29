@@ -1,23 +1,34 @@
+// Initialize the slide index
 let slideIndex = 0;
-        showDivs();
+// Call the function to show slides
+showDivs();
 
-        function plusDivs(n) {
-            slideIndex += n;
-            showDivs();
-        }
+// Function to change the slide index by a specific number
+function plusDivs(n) {
+    slideIndex += n;
+    showDivs();
+}
 
-        function showDivs() {
-            let i;
-            let x = document.getElementsByClassName("mySlides");
-            if (slideIndex >= x.length) {slideIndex = 0}
-            if (slideIndex < 0) {slideIndex = x.length - 1}
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            x[slideIndex].style.display = "block";
-        }
+// Function to show the current slide based on the slide index
+function showDivs() {
+    // Select all elements with the class "mySlides"
+    let $slides = $(".mySlides");
+    
+    // Reset the slide index if it exceeds the number of slides
+    if (slideIndex >= $slides.length) {
+        slideIndex = 0;
+    }
+    
+    // Set the slide index to the last slide if it goes below 0
+    if (slideIndex < 0) {
+        slideIndex = $slides.length - 1;
+    }
+    
+    $slides.hide();
+    $slides.eq(slideIndex).show();
+}
 
-        // Aggiungi un timer per passare automaticamente alla foto successiva ogni 3 secondi
-        setInterval(function() {
-            plusDivs(1);
-        }, 10000);
+// Add a timer to automatically move to the next photo every 10 seconds
+setInterval(function() {
+    plusDivs(1);
+}, 10000);

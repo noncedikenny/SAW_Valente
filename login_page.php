@@ -37,7 +37,7 @@
                 }
                 ?></span>
 
-                
+            <!-- Remember me -->                
             <label for="remember_me">Remember Me</label>
             <input type="checkbox" id="remember_me" name="remember_me"> <br>
 

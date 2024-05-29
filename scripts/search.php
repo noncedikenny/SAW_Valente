@@ -1,39 +1,41 @@
 <?php
-
+    // Start the session if it hasn't been started already
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
 
+    // Check if the 'query' parameter is set in the GET request
     if (isset($_GET['query'])) {
         $query = $_GET['query'];
-        searchDatabase($query);
-    }
 
-    function searchDatabase($query) {
         include('../utilities/dbconfig.php');
 
-        // Prepara la query
+        // Prepare the SQL statement with a placeholder for the search term
         $sql = "SELECT * FROM products WHERE name LIKE ?";
         $stmt = $conn->prepare($sql);
-        $searchTerm = "%".$query."%";
+        
+        // Add wildcards to the search term for the LIKE operator
+        $searchTerm = "%" . $query . "%";
+        
+        // Bind the search term to the SQL statement
         $stmt->bind_param("s", $searchTerm);
 
-        // Esegui la query
         $stmt->execute();
         $result = $stmt->get_result();
 
         $resultsArray = [];
+        
+        // Fetch each row from the result set and add it to the results array
         while($row = $result->fetch_assoc()) {
             $resultsArray[] = $row;
         }
 
-        // Salva i risultati nella variabile di sessione
         $_SESSION['result'] = $resultsArray;
 
-        // Chiudi la connessione
         $stmt->close();
         $conn->close();
     }
 
-    header('location: ../result_page.php');
+    // Redirect to the results page
+    header('Location: ../result_page.php');
 ?>

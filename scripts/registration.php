@@ -3,13 +3,15 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Initialize variables
 $firstname = $lastname = $email = $password = $conf_password = "";
 $empty_err = $firstname_err = $lastname_err = $email_err = $password_err1 = $password_err2 = $conf_password_err = "";
 $hash = "";
 
+// Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Dichiarazioni
+    // Assign POST values to variables
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];
@@ -17,27 +19,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conf_password = $_POST["confirm"];
     $thereIsAnError = false;
 
-    // Ritorna errore se qualche campo è vuoto
+    // Check for empty fields
     if (empty($firstname) || empty($lastname) || empty($email) || empty($password) || empty($conf_password)) {
         $empty_err = "*Compila tutti i campi.";
+        $_SESSION['empty_error'] = $empty_err;
         $thereIsAnError = true;
-    }
+    } else {
+        // Sanitize input values
+        $firstname = htmlspecialchars(stripslashes(trim($firstname)));
+        $lastname = htmlspecialchars(stripslashes(trim($lastname)));
+        $email = htmlspecialchars(stripslashes(trim($email)));
+        $password = htmlspecialchars(stripslashes(trim($password)));
+        $conf_password = htmlspecialchars(stripslashes(trim($conf_password)));
 
-    else {
-        // Sanificazione
-        $firstname = htmlspecialchars(stripslashes(trim($_POST["firstname"])));
-        $lastname = htmlspecialchars(stripslashes(trim($_POST["lastname"])));
-        $email = htmlspecialchars(stripslashes(trim($_POST["email"])));
-        $password = htmlspecialchars(stripslashes(trim($_POST["pass"])));
-        $conf_password = htmlspecialchars(stripslashes(trim($_POST["confirm"])));
-
-        // Errori vari
-        if (!preg_match("/^[a-zA-Z]+$/", $firstname)) {
+        // Validate input values
+        if (!preg_match("/^[a-zA-Z ]+$/", $firstname)) {
             $firstname_err = "*Sono ammesse solo le lettere maiuscole e minuscole.";
             $_SESSION["firstname_error"] = $firstname_err;
             $thereIsAnError = true;
         }
-        if (!preg_match("/^[a-zA-Z]+$/", $lastname)) {
+        if (!preg_match("/^[a-zA-Z ]+$/", $lastname)) {
             $lastname_err = "*Sono ammesse solo le lettere maiuscole e minuscole.";
             $_SESSION["lastname_error"] = $lastname_err;
             $thereIsAnError = true;
@@ -57,46 +58,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["password_error2"] = $password_err2;
             $thereIsAnError = true;
         }
-        if ($password != $conf_password) {
+        if ($password !== $conf_password) {
             $conf_password_err = "*Le password non corrispondono.";
             $_SESSION["conf_password_error"] = $conf_password_err;
             $thereIsAnError = true;
         }
     }
 
+    // If no errors, proceed with database insertion
     if (!$thereIsAnError) {
-        // Cripta la password
+        // Hash the password
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
+        // Store user details in session
         $_SESSION["firstname"] = $firstname;
         $_SESSION["lastname"] = $lastname;
         $_SESSION["email"] = $email;
 
+        // Include database configuration
         include("../utilities/dbconfig.php");
 
+        // Escape user inputs for security
         $firstname = mysqli_real_escape_string($conn, $firstname);
         $lastname = mysqli_real_escape_string($conn, $lastname);
         $email = mysqli_real_escape_string($conn, $email);
 
+        // Prepare the SQL statement
         $sql = "INSERT INTO users (FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?)";
-
-        // Creazione del prepared statement
         $stmt = $conn->prepare($sql);
-
-        // Bind dei parametri
         $stmt->bind_param("ssss", $firstname, $lastname, $email, $hash);
 
+        // Execute the statement
         $stmt->execute();
 
-        // Chiusura del prepared statement e della connessione
+        // Close the statement and connection
         $stmt->close();
         $conn->close();
 
+        // Redirect to the homepage
         header("location: ../index.php");
-    }
-    else {
+    } else {
+        // Redirect to the registration page if there are errors
         header("Location: ../registration_page.php");
     }
 }
-
 ?>

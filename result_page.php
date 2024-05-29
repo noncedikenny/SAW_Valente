@@ -29,9 +29,6 @@
 
     <main>
         <?php
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
             $result = $_SESSION['result'] ?? null;
             if (isset($_SESSION['result'])) {
                 $resultsArray = $_SESSION['result'];

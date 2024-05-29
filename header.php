@@ -12,6 +12,7 @@
         </a>
     </div>
 
+    <!-- Searchbar -->
     <div class="w3-grey w3-center w3-padding search-container">
         <form method="GET" action="scripts/search.php">
             <input type="text" name="query" id="query" placeholder="Cerca nel sito...">
@@ -23,11 +24,11 @@
     <!-- Navbar -->
     <div class="w3-bar w3-black">
         <?php
-        if(isset($_SESSION['firstname'])) {
+        if(isset($_SESSION['firstname']) && isset($_SESSION['lastname'])) {
             echo '<a href="aboutus.php" class="w3-bar-item w3-button w3-mobile" style="width:25%">Chi Siamo?</a>';
             echo '<a href="shop.php" class="w3-bar-item w3-button w3-mobile" style="width:25%">Catalogo</a>';
             echo '<a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">FAQ</a>';
-            echo "<a href='private_area.php' class='w3-bar-item w3-button w3-mobile' style='width:25%'>{$_SESSION['firstname']} {$_SESSION['lastname']}</a>";
+            echo "<a href='show_profile.php' class='w3-bar-item w3-button w3-mobile' style='width:25%'>{$_SESSION['firstname']} {$_SESSION['lastname']}</a>";
         }
         else {
             echo '<a href="aboutus.php" class="w3-bar-item w3-button w3-mobile" style="width:20%">Chi Siamo?</a>';
@@ -40,12 +41,12 @@
     </div>
 </header>
 
+<!-- Block the searchbar input if it's empty -->
 <script>
     $(document).ready(function() {
         $('#submitButton').click(function(event) {
             var inputValue = $('#query').val();
             if (inputValue === '') {
-                // Se l'input è vuoto, annulla l'invio del modulo
                 event.preventDefault();
                 $('#emptyInput').css({
                     'display': 'block'

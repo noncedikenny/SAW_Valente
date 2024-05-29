@@ -1,6 +1,10 @@
+// Adds a product to the cart for a specific user
 function addToCart(userId, productName, productPrice) {
+    // Retrieve the carts from localStorage, or create an empty object if they don't exist
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
+    // Retrieves the specific user's cart, or creates an empty array if it does not exist
     let cart = carts[userId] || [];
+    // Find the item in the user's cart
     let item = cart.find(item => item.name === productName);
 
     if (item) {
@@ -9,25 +13,31 @@ function addToCart(userId, productName, productPrice) {
         cart.push({ name: productName, price: productPrice, quantity: 1 });
     }
 
+    // Saves the updated cart for the user
     carts[userId] = cart;
     localStorage.setItem('carts', JSON.stringify(carts));
+    // Show a confirmation message
     alert('Prodotto aggiunto al carrello');
 }
 
+// View the cart for a specific user
 function displayCart(userId) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
     let cart = carts[userId] || [];
-    let cartItemsContainer = document.getElementById('cart-items');
-    
+    // Select the cart item container
+    let $cartItemsContainer = $('#cart-items');
+
+    // If your cart is empty, show an empty cart message
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = `
+        $cartItemsContainer.html(`
             <div class="w3-center">
                 <img src="../photos/empty_cart.png" style="width: 25%;" alt="Carrello vuoto">
                 <p>Il carrello è vuoto.</p>
             </div>
-        `;
+        `);
     } else {
-        cartItemsContainer.innerHTML = cart.map(item => `
+        // If your cart contains items, view them
+        $cartItemsContainer.html(cart.map(item => `
             <div class="w3-card-4 w3-margin w3-padding">
                 <span class="w3-text-red w3-right" onclick="removeFromCart('${userId}', '${item.name}')">&times;</span>
                 <h3>${item.name}</h3>
@@ -38,12 +48,13 @@ function displayCart(userId) {
                 </p>
                 <p>Totale: €${item.price * item.quantity}</p>
             </div>
-        `).join('');
+        `).join(''));
     }
 
     calculateTotalPrice(userId);
 }
 
+// Cleans the cart for a specific user
 function clearCart(userId) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
     delete carts[userId];
@@ -56,7 +67,7 @@ function calculateTotalPrice(userId) {
     let cart = carts[userId] || [];
     let totalPrice = 0;
 
-    // Calcola la somma dei prezzi degli oggetti nel carrello
+    // Calculate the total price by adding the price of each item multiplied by the quantity
     cart.forEach(item => {
         totalPrice += item.price * item.quantity;
     });
@@ -64,20 +75,28 @@ function calculateTotalPrice(userId) {
     $('#showTotalPrice').text("Prezzo totale: " + totalPrice + "€");
 }
 
+// Removes an item from the cart
 function removeFromCart(userId, itemName) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
     let cart = carts[userId] || [];
     
-    // Rimuove l'elemento dal carrello
+    // Filter the articles to remove the one with the specified name
     cart = cart.filter(item => item.name !== itemName);
     
-    carts[userId] = cart;
+    // If the cart is empty after removal, delete the user's cart
+    if (cart.length === 0) {
+        delete carts[userId];
+    } else {
+        // Save the updated cart for the user
+        carts[userId] = cart;
+    }
+
     localStorage.setItem('carts', JSON.stringify(carts));
     
-    // Ridisegna il carrello per riflettere le modifiche
     displayCart(userId);
 }
 
+// Cambia la quantità di un articolo nel carrello
 function changeQuantity(userId, productName, action) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
     let cart = carts[userId] || [];
@@ -93,7 +112,9 @@ function changeQuantity(userId, productName, action) {
         }
     }
 
+    // Saves the updated cart for the user
     carts[userId] = cart;
     localStorage.setItem('carts', JSON.stringify(carts));
+
     displayCart(userId);
 }

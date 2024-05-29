@@ -62,7 +62,7 @@
             <p class="error" id="email_error"></p>
 
             <!-- Password -->
-            <label for="pass">Password <i class="fa fa-eye" onclick="myFunction('pass')"></i></label> <br>
+            <label for="pass">Password <i class="fa fa-eye" onclick="changeElement('pass')"></i></label> <br>
             <input class="w3-input w3-round-large" type="password" placeholder="Password" id="pass" name="pass" required="required">
             <span class="error"><?php
                 if(isset($_SESSION['password_error1'])) {
@@ -80,7 +80,7 @@
             <p class="error" id="password_error"></p>
 
             <!-- Confirm Password -->
-            <label for="confirm">Confirm Password <i class="fa fa-eye" onclick="myFunction('confirm')"></i></label> <br>
+            <label for="confirm">Conferma Password <i class="fa fa-eye" onclick="changeElement('confirm')"></i></label> <br>
             <input class="w3-input w3-round-large" type="password" placeholder="Confirm Password" id="confirm" name="confirm" required="required">
             <span class="error"><?php
                 if(isset($_SESSION['conf_password_error'])) {
@@ -97,7 +97,7 @@
     </div>
     
     <script>
-        function myFunction(elementToChange) {
+        function changeElement(elementToChange) {
             var x = document.getElementById(elementToChange);
             if (x.type === "password") {
                 x.type = "text";
