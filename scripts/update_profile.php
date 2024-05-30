@@ -1,5 +1,4 @@
 <?php
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -18,8 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];
-    $password = $_POST["pass"];
-    $conf_password = $_POST["confirm"];
+    if(isset($_POST["pass"]) && isset($_POST["confirm"])) {
+        $password = $_POST["pass"];
+        $conf_password = $_POST["confirm"];
+    }
+    else {
+        $password = $conf_password = "************";
+    }
     $thereIsAnError = false;
 
     // Check for empty fields
@@ -51,14 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["email_error"] = $email_err;
             $thereIsAnError = true;
         }
-        if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password) && $password != "************") {
-            $password_err1 = "*La password deve contenere: una lettera maiuscola, una lettera minuscola, un numero ed un carattere speciale.";
+        if (strlen($password) < 8 && $password != "************") {
+            $password_err1 = "*La password deve contenere almeno 8 caratteri.";
             $_SESSION["password_error1"] = $password_err1;
-            $thereIsAnError = true;
-        }
-        if (strlen($password) < 8) {
-            $password_err2 = "*La password deve contenere almeno 8 caratteri.";
-            $_SESSION["password_error2"] = $password_err2;
             $thereIsAnError = true;
         }
         if ($password !== $conf_password) {
@@ -117,6 +116,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
         $conn->close();
     } 
-    header('location: ../private_area.php');
+    header('location: ../show_profile.php');
 }
 ?>

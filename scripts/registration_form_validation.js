@@ -59,10 +59,6 @@ $(document).ready(function() {
     function validatePassword() {
         if ($password.val().length < 8) {
             $password_error.html('La password deve contenere almeno 8 caratteri');
-        }
-        const password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        if (!password_regex.test($password.val())) {
-            $password_error.html('La password deve contenere otto caratteri, almeno: una lettera maiuscola, una lettera minuscola, un numero ed un carattere speciale.');
         } else {
             $password_error.html('');
         }

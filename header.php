@@ -24,20 +24,21 @@
     <!-- Navbar -->
     <div class="w3-bar w3-black">
         <?php
-        if(isset($_SESSION['firstname']) && isset($_SESSION['lastname'])) {
-            echo '<a href="aboutus.php" class="w3-bar-item w3-button w3-mobile" style="width:25%">Chi Siamo?</a>';
-            echo '<a href="shop.php" class="w3-bar-item w3-button w3-mobile" style="width:25%">Catalogo</a>';
-            echo '<a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">FAQ</a>';
-            echo "<a href='show_profile.php' class='w3-bar-item w3-button w3-mobile' style='width:25%'>{$_SESSION['firstname']} {$_SESSION['lastname']}</a>";
-        }
-        else {
-            echo '<a href="aboutus.php" class="w3-bar-item w3-button w3-mobile" style="width:20%">Chi Siamo?</a>';
-            echo '<a href="shop.php" class="w3-bar-item w3-button w3-mobile" style="width:20%">Catalogo</a>';
-            echo '<a href="#" class="w3-bar-item w3-button w3-mobile" style="width:20%">FAQ</a>';
-            echo '<a href="registration_page.php" class="w3-bar-item w3-button w3-mobile" style="width:20%">Registrati</a>';
-            echo '<a href="login_page.php" class="w3-bar-item w3-button w3-mobile" style="width: 20%">Login</a>';
-        }
-        ?>
+        if(isset($_SESSION['firstname']) && isset($_SESSION['lastname'])) { ?>
+            <a href="aboutus.php" class="w3-bar-item w3-button w3-mobile" style="width:25%">Chi Siamo?</a>
+            <a href="shop.php" class="w3-bar-item w3-button w3-mobile" style="width:25%">Catalogo</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:25%">FAQ</a>
+            <a href='show_profile.php' class='w3-bar-item w3-button w3-mobile' style='width:25%'><?php echo "{$_SESSION['firstname']} {$_SESSION['lastname']}"; ?></a>
+        <?php }
+        
+        else { ?>
+            <a href="aboutus.php" class="w3-bar-item w3-button w3-mobile" style="width:20%">Chi Siamo?</a>
+            <a href="shop.php" class="w3-bar-item w3-button w3-mobile" style="width:20%">Catalogo</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile" style="width:20%">FAQ</a>
+            <a href="registration_page.php" class="w3-bar-item w3-button w3-mobile" style="width:20%">Registrati</a>
+            <a href="login_page.php" class="w3-bar-item w3-button w3-mobile" style="width: 20%">Login</a>
+        <?php } ?>
+        
     </div>
 </header>
 

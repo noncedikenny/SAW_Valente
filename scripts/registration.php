@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Initialize variables
 $firstname = $lastname = $email = $password = $conf_password = "";
-$empty_err = $firstname_err = $lastname_err = $email_err = $password_err1 = $password_err2 = $conf_password_err = "";
+$empty_err = $firstname_err = $lastname_err = $email_err = $password_err1 = $conf_password_err = "";
 $hash = "";
 
 // Check if the form was submitted
@@ -48,14 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["email_error"] = $email_err;
             $thereIsAnError = true;
         }
-        if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
-            $password_err1 = "*La password deve contenere: una lettera maiuscola, una lettera minuscola, un numero ed un carattere speciale.";
-            $_SESSION["password_error1"] = $password_err1;
-            $thereIsAnError = true;
-        }
         if (strlen($password) < 8) {
-            $password_err2 = "*La password deve contenere almeno 8 caratteri.";
-            $_SESSION["password_error2"] = $password_err2;
+            $password_err1 = "*La password deve contenere almeno 8 caratteri.";
+            $_SESSION["password_error1"] = $password_err1;
             $thereIsAnError = true;
         }
         if ($password !== $conf_password) {
@@ -89,17 +84,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssss", $firstname, $lastname, $email, $hash);
 
         // Execute the statement
-        $stmt->execute();
-
-        // Close the statement and connection
-        $stmt->close();
-        $conn->close();
-
-        // Redirect to the homepage
-        header("location: ../index.php");
+        if ($stmt->execute()) {
+            // Close the statement and connection
+            $stmt->close();
+            $conn->close();
+            // Redirect to the homepage
+            header("location: ../index.php");
+            exit;
+        } else {
+            // Handle execution error
+            echo "Error: " . $stmt->error;
+            $stmt->close();
+            $conn->close();
+        }
     } else {
         // Redirect to the registration page if there are errors
         header("Location: ../registration_page.php");
+        exit;
     }
 }
 ?>

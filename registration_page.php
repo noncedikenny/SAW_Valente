@@ -92,7 +92,7 @@
             
             <p class="error" id="confirm_error"></p>
 
-            <input class="w3-button w3-black w3-round" style="margin: 20px 0 0 0;" type="submit" value="Registrati">
+            <input class="w3-button w3-black w3-round" style="margin: 20px 0 0 0;" type="submit" name="submit" value="Registrati">
         </form>
     </div>
     

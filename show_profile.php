@@ -2,6 +2,7 @@
 <html lang="it">
 
 <?php 
+    session_start();
     // Redirect to login page if user is not logged in
     if (!isset($_SESSION['email'])) {
         header("Location: login_page.php");
@@ -124,7 +125,7 @@
                 <p class="error" id="confirm_error"></p>
 
                 <!-- Submit button -->
-                <input class="w3-button w3-black w3-round" style="margin: 20px 0 0 0;" type="submit" value="Cambia I Tuoi Dati">
+                <input class="w3-button w3-black w3-round" style="margin: 20px 0 0 0;" type="submit" name="submit" value="Cambia I Tuoi Dati">
             </form>
         </div>
     </div>
