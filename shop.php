@@ -29,7 +29,7 @@
 
 <body>
     <?php include('header.php'); ?>
-    <?php include('utilities/buy_popup_layout.php'); ?>
+    <?php include('buy_popup_layout.php'); ?>
 
 <main>
 
@@ -109,7 +109,6 @@
                 <img src="photos/shop_photos/kit di pulsanti.png" alt="Pulsanti"> <br>
                 <h3>Kit di Pulsanti</h3>
                 <h5>20€</h5>
-
                 <button class='w3-btn w3-green' onclick="<?php echo isset($_SESSION['email']) ? "addToCart('{$_SESSION['email']}', 'Pulsanti', 20)" : "window.location.replace('login_page.php')"; ?>">
                     <?php
                         echo isset($_SESSION['email']) 
@@ -117,17 +116,6 @@
                             : "Loggati per acquistare";
                     ?>
                 </button>
-
-                <?php
-                    /*
-                    if (isset($_SESSION['firstname'])) {
-                        echo "<button class='w3-btn w3-green' onclick='addToCart(\"{$_SESSION['email']}\", \"Pulsanti\", 20)'>Aggiungi al carrello</button>";
-                    }
-                    else {
-                        echo "<button class='w3-btn w3-green' onclick='window.location.replace(\"login_page.php\");'>Loggati per acquistare</button>";
-                    }
-                    */
-                ?>
             </div>
 
             <!-- Steering Wheel -->

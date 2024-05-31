@@ -77,13 +77,16 @@
             <br>
 
             <?php
-                if (isset($_SESSION['firstname'])) {
-                    echo "<input type='submit' class='w3-btn w3-blue' onclick='addToCartFromPopup(\"{$_SESSION['email']}\")' value='Ordina'>";
-                }
-                else {
-                    echo "<input type='submit' class='w3-btn w3-green' onclick='window.location.replace(\"login_page.php\");' value='Loggati per acquistare'>";
-                }
+                $onclick = isset($_SESSION['email']) 
+                    ? "addToCartFromPopup('{$_SESSION['email']}')"
+                    : "window.location.replace('login_page.php')";
+
+                $value = isset($_SESSION['email']) 
+                    ? "Ordina"
+                    : "Loggati per acquistare";
             ?>
+            <input type="submit" class="w3-btn w3-blue" onclick="<?php echo $onclick; ?>" value="<?php echo $value ?>">
+
         </form>
     </div>
 </div>
