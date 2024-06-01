@@ -9,7 +9,7 @@
         exit();
     }
 
-    include('utilities/cookie_check.php');
+    require_once('utilities/cookie_check.php');
 ?>
 
 <head>

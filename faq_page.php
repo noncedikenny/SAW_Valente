@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 
-<?php include('utilities/cookie_check.php'); ?>
+<?php require_once('utilities/cookie_check.php'); ?>
 
 <head>
     <?php include('head_items.html'); ?>

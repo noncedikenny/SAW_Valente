@@ -118,3 +118,29 @@ function changeQuantity(userId, productName, action) {
 
     displayCart(userId);
 }
+
+function completeOrder(userId) {
+    let carts = JSON.parse(localStorage.getItem('carts')) || {};
+    let cart = carts[userId] || [];
+
+    if (cart) {
+        fetch("scripts/complete_payment.php"), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ cart: cart })
+        }
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Carrello inviato con successo!');
+            } else {
+                alert('Errore nell\'invio del carrello.');
+            }
+        })
+        .catch(error => console.error('Errore:', error));
+    } else {
+        alert('Il carrello è vuoto.');
+    }
+}
