@@ -28,8 +28,10 @@
 </head>
 
 <body>
-    <?php include('header.php'); 
-    include('buy_popup_layout.php'); ?>
+    <?php 
+    include('header.php'); 
+    include('buy_popup_layout.php'); 
+    ?>
 <main>
 
     <div class="w3-container w3-center w3-margin-top">

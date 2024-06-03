@@ -19,8 +19,8 @@
                 <h2>Il tuo carrello</h2>
                 <div id="cart-items" class="w3-margin w3-padding w3-card-4"></div>
                 <h4 id="showTotalPrice"></h4>
-                <button class='w3-button w3-green' onclick='completeOrder(<?php echo $_SESSION["email"]; ?>)'>Completa l'ordine</button>
-                <button class='w3-button w3-red w3-right' onclick='clearCart(<?php echo $_SESSION["email"]; ?>)'>Svuota carrello</button>
+                <button class='w3-button w3-green' onclick='completeOrder("<?php echo $_SESSION["email"]; ?>")'>Completa l'ordine</button>
+                <button class='w3-button w3-red w3-right' onclick='clearCart("<?php echo $_SESSION["email"]; ?>")'>Svuota carrello</button>
                 <a href="shop.php" class="w3-button w3-blue">Continua lo shopping</a>
             </div>
         <?php }

@@ -123,14 +123,14 @@ function completeOrder(userId) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
     let cart = carts[userId] || [];
 
-    if (cart) {
-        fetch("scripts/complete_payment.php"), {
+    if (cart.length > 0) {
+        fetch("scripts/complete_payment.php", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ cart: cart })
-        }
+        })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -144,3 +144,4 @@ function completeOrder(userId) {
         alert('Il carrello è vuoto.');
     }
 }
+
