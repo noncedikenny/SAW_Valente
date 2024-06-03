@@ -14,7 +14,12 @@
 
 <body>
 
-<?php include('header.php'); ?>
+<?php
+    include('header.php'); 
+    if(isset($_SESSION['islogged']) && $_SESSION['islogged'] == true) {
+        header('location: index.php');
+    }
+?>
 
 <main>
     <div class="w3-container w3-card form-container">

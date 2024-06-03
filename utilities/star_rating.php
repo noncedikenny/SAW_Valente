@@ -26,7 +26,11 @@
 </style>
 
 <?php
-if (isset($_SESSION['email'])) { ?>
+
+$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+require("purchase_check.php");
+
+if (isset($_SESSION['email']) && $hasPurchased == true) { ?>
     <div class="w3-card" style="background-color: lightgray; margin: 20px auto; width: 100%;">
         <h5>Lascia una recensione!</h5>
         <div id="rating-<?php echo htmlspecialchars($productName, ENT_QUOTES, 'UTF-8'); ?>">

@@ -36,7 +36,7 @@
     <h2 class="w3-center">Domande Frequenti (FAQ)</h2>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question" onclick="toggleAnswer('faq1')">
+        <header class="w3-container w3-grey faq-question">
             <h3>Quali tipi di cabinati arcade vendete?</h3>
         </header>
         <div id="faq1" class="w3-container faq-answer">
@@ -45,7 +45,7 @@
     </div>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question" onclick="toggleAnswer('faq2')">
+        <header class="w3-container w3-grey faq-question">
             <h3>Posso personalizzare il mio cabinato?</h3>
         </header>
         <div id="faq2" class="w3-container faq-answer">
@@ -54,7 +54,7 @@
     </div>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question" onclick="toggleAnswer('faq3')">
+        <header class="w3-container w3-grey faq-question">
             <h3>Come viene gestita la spedizione dei cabinati?</h3>
         </header>
         <div id="faq3" class="w3-container faq-answer">
@@ -63,7 +63,7 @@
     </div>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question" onclick="toggleAnswer('faq4')">
+        <header class="w3-container w3-grey faq-question">
             <h3>Qual è la politica di garanzia per i cabinati?</h3>
         </header>
         <div id="faq4" class="w3-container faq-answer">
@@ -72,7 +72,7 @@
     </div>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question" onclick="toggleAnswer('faq5')">
+        <header class="w3-container w3-grey faq-question">
             <h3>Avete un supporto clienti?</h3>
         </header>
         <div id="faq5" class="w3-container faq-answer">
@@ -81,7 +81,7 @@
     </div>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question" onclick="toggleAnswer('faq6')">
+        <header class="w3-container w3-grey faq-question">
             <h3>Quali metodi di pagamento accettate?</h3>
         </header>
         <div id="faq6" class="w3-container faq-answer">
@@ -95,14 +95,11 @@
 <?php include('footer.html') ?>
 
 <script>
-    function toggleAnswer(id) {
-        var x = document.getElementById(id);
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
+    $(document).ready(function() {
+        $('.faq-question').click(function() {
+            $(this).next('.faq-answer').toggle();
+        });
+    });
 </script>
 
 </body>

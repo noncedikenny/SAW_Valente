@@ -69,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["firstname"] = $firstname;
         $_SESSION["lastname"] = $lastname;
         $_SESSION["email"] = $email;
+        $_SESSION["islogged"] = true;
 
         // Include database configuration
         include("../utilities/dbconfig.php");

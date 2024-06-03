@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 session_start();
 
 // Verifica se l'utente è loggato
-if (!isset($_SESSION['email'])) {
+if (!isset($_SESSION['islogged'])) {
     echo json_encode(['success' => false, 'message' => 'Devi effettuare il login per votare.']);
     exit;
 }

@@ -122,6 +122,7 @@ function changeQuantity(userId, productName, action) {
 function completeOrder(userId) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
     let cart = carts[userId] || [];
+    let purchaseDate = new Date().toISOString().split('T')[0];
 
     if (cart.length > 0) {
         fetch("scripts/complete_payment.php", {
@@ -129,14 +130,23 @@ function completeOrder(userId) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ cart: cart })
+            body: JSON.stringify({ cart: cart, purchaseDate: purchaseDate })
         })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
-            if (data.success) {
-                alert('Carrello inviato con successo!');
-            } else {
-                alert('Errore nell\'invio del carrello.');
+            try {
+                let jsonData = JSON.parse(data);
+                if (jsonData.success) {
+                    alert('Acquisto effettuato, grazie!');
+                    clearCart(userId);
+                    window.location.replace('index.php');
+                } else {
+                    alert('Errore nell\'invio del carrello.');
+                }
+            } catch (e) {
+                console.error('Errore nel parsing del JSON:', e);
+                console.error('Risposta del server:', data);
+                alert('Errore nella risposta del server.');
             }
         })
         .catch(error => console.error('Errore:', error));
@@ -144,4 +154,5 @@ function completeOrder(userId) {
         alert('Il carrello è vuoto.');
     }
 }
+
 

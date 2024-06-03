@@ -3,6 +3,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if (!isset($_SESSION["islogged"])) {
+    die("Errore: riprovare più tardi.");
+}
+
 // Initialize variables
 $firstname = $lastname = $email = $password = $conf_password = "";
 $empty_err = $firstname_err = $lastname_err = $email_err = $password_err1 = $password_err2 = $conf_password_err = "";

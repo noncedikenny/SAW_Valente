@@ -53,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['firstname'] = $row["FirstName"];
                 $_SESSION['lastname'] = $row["LastName"];
                 $_SESSION['email'] = $row["Email"];
+                $_SESSION['islogged'] = true;
                 header("Location: ../index.php");
             } else {
                 $error = "*Email o password errati.";

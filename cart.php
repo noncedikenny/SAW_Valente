@@ -14,7 +14,7 @@
 
 <main>
     <?php
-        if(isset($_SESSION['email'])) { ?>
+        if(isset($_SESSION['islogged']) && $_SESSION['islogged'] == true) { ?>
             <div class="w3-container" style="margin: 30px;">
                 <h2>Il tuo carrello</h2>
                 <div id="cart-items" class="w3-margin w3-padding w3-card-4"></div>

@@ -77,11 +77,11 @@
             <br>
 
             <?php
-                $onclick = isset($_SESSION['email']) 
+                $onclick = isset($_SESSION['islogged']) && $_SESSION['islogged'] == true 
                     ? "addToCartFromPopup('{$_SESSION['email']}')"
                     : "window.location.replace('login_page.php')";
 
-                $value = isset($_SESSION['email']) 
+                $value = isset($_SESSION['islogged']) && $_SESSION['islogged'] == true
                     ? "Ordina"
                     : "Loggati per acquistare";
             ?>
