@@ -22,7 +22,7 @@
     </div>
 
     <!-- Navbar -->
-    <div id="navbar" style="display: none" class="w3-bar w3-black">
+    <div id="navbar" class="w3-bar w3-black">
         <?php
         if(isset($_SESSION['islogged']) && $_SESSION['islogged'] == true) { ?>
             <a href="aboutus.php" class="w3-bar-item w3-button w3-mobile" style="width:25%">Chi Siamo?</a>
@@ -54,13 +54,6 @@
                 });
             }
         });
-
-        $('header').mouseenter(function(event) {
-            $('#navbar').show();
-        })
-        $('header').mouseleave(function(event) {
-            $('#navbar').hide();
-        })
     });
 
 

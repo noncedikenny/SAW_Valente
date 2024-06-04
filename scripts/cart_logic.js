@@ -1,8 +1,6 @@
 // Adds a product to the cart for a specific user
 function addToCart(userId, productName, productPrice) {
-    // Retrieve the carts from localStorage, or create an empty object if they don't exist
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
-    // Retrieves the specific user's cart, or creates an empty array if it does not exist
     let cart = carts[userId] || [];
     // Find the item in the user's cart
     let item = cart.find(item => item.name === productName);

@@ -1,6 +1,4 @@
-// Initialize the slide index
 let slideIndex = 0;
-// Call the function to show slides
 showDivs();
 
 // Function to change the slide index by a specific number
@@ -11,7 +9,6 @@ function plusDivs(n) {
 
 // Function to show the current slide based on the slide index
 function showDivs() {
-    // Select all elements with the class "mySlides"
     let $slides = $(".mySlides");
     
     // Reset the slide index if it exceeds the number of slides
@@ -28,7 +25,6 @@ function showDivs() {
     $slides.eq(slideIndex).show();
 }
 
-// Add a timer to automatically move to the next photo every 10 seconds
 setInterval(function() {
     plusDivs(1);
 }, 10000);

@@ -1,4 +1,6 @@
 <?php
+require_once("../utilities/dbconfig.php");
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -70,9 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["lastname"] = $lastname;
         $_SESSION["email"] = $email;
         $_SESSION["islogged"] = true;
-
-        // Include database configuration
-        include("../utilities/dbconfig.php");
 
         // Escape user inputs for security
         $firstname = mysqli_real_escape_string($conn, $firstname);

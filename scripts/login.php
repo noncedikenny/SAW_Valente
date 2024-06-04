@@ -1,4 +1,6 @@
 <?php
+require_once("../utilities/dbconfig.php");
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -9,9 +11,10 @@ $hash = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Something's empty
-    if(empty($_POST["email"] || $_POST["pass"])) {
+    if(empty($_POST["email"]) || empty($_POST["pass"])) {
         $error = "*Compila tutti i campi.";
         $_SESSION['error'] = $error;
+        header("Location: ../login_page.php");
     }
 
 
@@ -20,13 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = htmlspecialchars(stripslashes(trim($_POST["email"])));
         $password = htmlspecialchars(stripslashes(trim($_POST["pass"])));
 
-        include("../utilities/dbconfig.php");
-
         $email = mysqli_real_escape_string($conn, $email);
-        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $sql = "SELECT * FROM users WHERE email = ?";
         
-        // Query execution
-        $result = $conn->query($sql);
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
 
         if($result->num_rows == 1) {
             $row = $result->fetch_assoc();
@@ -43,10 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     // Encrypt the cookie and save it crypted on the database
                     $crypted_token = password_hash($token, PASSWORD_DEFAULT);
-                    $sql = "UPDATE users SET Cookie = '$crypted_token' WHERE Email = '$email';";
-                    $conn->query($sql);
-                    $sql = "UPDATE users SET CookieExpiration = '$expiration' WHERE Email = '$email';";
-                    $conn->query($sql);
+
+                    $sql = "UPDATE users SET Cookie = ?, CookieExpiration = ? WHERE Email = ?;";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("sss", $crypted_token, $expiration, $email);
+                    $stmt->execute();
                 }
 
                 // Set session's variables
@@ -54,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['lastname'] = $row["LastName"];
                 $_SESSION['email'] = $row["Email"];
                 $_SESSION['islogged'] = true;
+                
                 header("Location: ../index.php");
             } else {
                 $error = "*Email o password errati.";

@@ -1,4 +1,6 @@
 <?php
+require_once("../utilities/dbconfig.php");
+
 header('Content-Type: application/json');
 
 // Avvia la sessione
@@ -21,9 +23,6 @@ if (is_null($input) || !isset($input['product']) || !isset($input['email']) || !
 $product = $input['product'];
 $email = $input['email'];
 $rating = $input['rating'];
-
-// Includi la configurazione del database
-include('../utilities/dbconfig.php');
 
 // Verifica se esiste già una valutazione per questo prodotto da parte di questo utente
 $sql = "SELECT 1 FROM product_ratings WHERE ProductName = ? AND UserEmail = ?";

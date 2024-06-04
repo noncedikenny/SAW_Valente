@@ -9,13 +9,14 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $input = json_decode(file_get_contents('php://input'), true);
 
+// Error cases
 if (is_null($input) || !isset($input['cart'])) {
     echo json_encode(['success' => false, 'message' => 'Dati del carrello non validi.']);
     exit();
 }
 
 $cart = $input['cart'];
-$purchaseDate = $input['purchaseDate'] ?? date('Y-m-d');  // Usa la data di oggi se non è fornita
+$purchaseDate = $input['purchaseDate'] ?? date('Y-m-d');
 
 if (!is_array($cart)) {
     echo json_encode(['success' => false, 'message' => 'Formato del carrello non valido.']);
@@ -34,9 +35,11 @@ if ($conn->connect_error) {
     exit();
 }
 
+// No error case
 foreach ($cart as $item) {
     $productName = $conn->real_escape_string($item["name"]);
 
+    // For each product, register in the database
     $sql = "INSERT INTO user_purchases (ProductName, UserEmail, PurchaseDate) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $productName, $email, $purchaseDate);

@@ -111,10 +111,6 @@
                 <img src="photos/shop_photos/custom_cabinet.png" alt="Personalizzato"> <br>
                 <h3>Personalizzato</h3>
                 <h5>A partire da 0 a 2000€</h5>
-                <?php 
-                    $productName = "Personalizzato";
-                    include("utilities/star_rating.php"); 
-                ?>
                 <button class="w3-btn w3-green" onclick="window.location.replace('aboutus.php');">Contatti</button>
             </div>
         </div>
@@ -170,10 +166,6 @@
                 <img src="photos/shop_photos/custom_cabinet.png" alt="Stickers"> <br>
                 <h3>Stickers</h3>
                 <h5>A partire da 10€ a 30€</h5>
-                <?php 
-                    $productName = "Stickers";
-                    include("utilities/star_rating.php"); 
-                ?>
                 <button class="w3-btn w3-green" onclick="window.location.replace('aboutus.php');">Contatti</button>
             </div>
         </div>

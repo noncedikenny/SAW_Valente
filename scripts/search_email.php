@@ -1,9 +1,7 @@
 <?php
+require_once("../utilities/dbconfig.php");
 
 if (isset($_GET['email'])) { 
-
-    include("../utilities/dbconfig.php");
-
     // Sanitize email to avoid injection attacks
     $email = mysqli_real_escape_string($conn, $_GET['email']); 
 
