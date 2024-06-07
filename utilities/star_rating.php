@@ -27,7 +27,7 @@
 
 <?php
 
-$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+require("dbconfig.php");
 require("purchase_check.php");
 
 if (isset($_SESSION['email']) && $hasPurchased == true) { ?>

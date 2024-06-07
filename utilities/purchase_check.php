@@ -13,4 +13,5 @@ if (isset($_SESSION['email'])) {
     }
 
     $purchaseCheckStmt->close();
+    $conn->close();
 }

@@ -1,4 +1,5 @@
 <?php
+require_once("dbconfig.php");
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -6,8 +7,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Quando un utente visita il sito, verifica se ha un token di accesso memorizzato nel browser
 if (isset($_COOKIE['remember_token'])) {
-    include("dbconfig.php");
-
     $cookie = $_COOKIE['remember_token'];
 
     $sql = "SELECT * FROM users WHERE Cookie IS NOT NULL";

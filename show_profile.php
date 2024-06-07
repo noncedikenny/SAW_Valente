@@ -124,6 +124,15 @@
                 </span>
                 <p class="error" id="confirm_error"></p>
 
+                <label for="number_creditcard">Numero della Carta</label>
+                <input class="w3-input w3-round-large" type="text" id="number_cc" maxlength="19" value="**** **** **** ****">
+
+                <label for="exp_creditcard">Scadenza della Carta</label>
+                <input class="w3-input w3-round-large" type="text" id="exp_cc" maxlength="5" value="**/**">
+
+                <label for="securitycode_creditcard"></label>
+                <input class="w3-input w3-round-large" type="text" maxlength="3" id="sc_cc" value="***">
+
                 <!-- Submit button -->
                 <input class="w3-button w3-black w3-round" style="margin: 20px 0 0 0;" type="submit" name="submit" value="Cambia I Tuoi Dati">
             </form>
@@ -133,6 +142,26 @@
 
 <!-- Include script to clear user's cart -->
 <script src="scripts/cart_logic.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('#number_cc').on('input', function() {
+        var val = $(this).val();
+
+        if (val.length === 4 || val.length === 9 || val.length === 14) {
+            $(this).val(val + ' ');
+        }
+    })
+
+    $('#exp_cc').on('input', function() {
+        var val = $(this).val();
+
+        if (val.length === 2 && val.indexOf('/') === -1) {
+            $(this).val(val + '/');
+        }
+    })
+})
+</script>
 
 <?php include('footer.html'); ?>
 </body>
