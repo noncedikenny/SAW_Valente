@@ -1,7 +1,7 @@
 // Adds a product to the cart for a specific user
-function addToCart(userId, productName, productPrice) {
+function addToCart(userEmail, productName, productPrice) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
-    let cart = carts[userId] || [];
+    let cart = carts[userEmail] || [];
     // Find the item in the user's cart
     let item = cart.find(item => item.name === productName);
 
@@ -12,16 +12,16 @@ function addToCart(userId, productName, productPrice) {
     }
 
     // Saves the updated cart for the user
-    carts[userId] = cart;
+    carts[userEmail] = cart;
     localStorage.setItem('carts', JSON.stringify(carts));
     // Show a confirmation message
     alert('Prodotto aggiunto al carrello');
 }
 
 // View the cart for a specific user
-function displayCart(userId) {
+function displayCart(userEmail) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
-    let cart = carts[userId] || [];
+    let cart = carts[userEmail] || [];
     // Select the cart item container
     let $cartItemsContainer = $('#cart-items');
 
@@ -37,32 +37,32 @@ function displayCart(userId) {
         // If your cart contains items, view them
         $cartItemsContainer.html(cart.map(item => `
             <div class="w3-card-4 w3-margin w3-padding">
-                <span class="w3-text-red w3-right" onclick="removeFromCart('${userId}', '${item.name}')">&times;</span>
+                <span class="w3-text-red w3-right" onclick="removeFromCart('${userEmail}', '${item.name}')">&times;</span>
                 <h3>${item.name}</h3>
                 <p>Prezzo: €${item.price}</p>
                 <p>Quantità: <span id="quantity_${item.name}">${item.quantity}</span>
-                    <button onclick="changeQuantity('${userId}', '${item.name}', 'increment')">+</button>
-                    <button onclick="changeQuantity('${userId}', '${item.name}', 'decrement')" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+                    <button onclick="changeQuantity('${userEmail}', '${item.name}', 'increment')">+</button>
+                    <button onclick="changeQuantity('${userEmail}', '${item.name}', 'decrement')" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
                 </p>
                 <p>Totale: €${item.price * item.quantity}</p>
             </div>
         `).join(''));
     }
 
-    calculateTotalPrice(userId);
+    calculateTotalPrice(userEmail);
 }
 
 // Cleans the cart for a specific user
-function clearCart(userId) {
+function clearCart(userEmail) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
-    delete carts[userId];
+    delete carts[userEmail];
     localStorage.setItem('carts', JSON.stringify(carts));
-    displayCart(userId);
+    displayCart(userEmail);
 }
 
-function calculateTotalPrice(userId) {
+function calculateTotalPrice(userEmail) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
-    let cart = carts[userId] || [];
+    let cart = carts[userEmail] || [];
     let totalPrice = 0;
 
     // Calculate the total price by adding the price of each item multiplied by the quantity
@@ -74,30 +74,30 @@ function calculateTotalPrice(userId) {
 }
 
 // Removes an item from the cart
-function removeFromCart(userId, itemName) {
+function removeFromCart(userEmail, itemName) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
-    let cart = carts[userId] || [];
+    let cart = carts[userEmail] || [];
     
     // Filter the articles to remove the one with the specified name
     cart = cart.filter(item => item.name !== itemName);
     
     // If the cart is empty after removal, delete the user's cart
     if (cart.length === 0) {
-        delete carts[userId];
+        delete carts[userEmail];
     } else {
         // Save the updated cart for the user
-        carts[userId] = cart;
+        carts[userEmail] = cart;
     }
 
     localStorage.setItem('carts', JSON.stringify(carts));
     
-    displayCart(userId);
+    displayCart(userEmail);
 }
 
 // Cambia la quantità di un articolo nel carrello
-function changeQuantity(userId, productName, action) {
+function changeQuantity(userEmail, productName, action) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
-    let cart = carts[userId] || [];
+    let cart = carts[userEmail] || [];
     let item = cart.find(item => item.name === productName);
 
     if (item) {
@@ -111,15 +111,15 @@ function changeQuantity(userId, productName, action) {
     }
 
     // Saves the updated cart for the user
-    carts[userId] = cart;
+    carts[userEmail] = cart;
     localStorage.setItem('carts', JSON.stringify(carts));
 
-    displayCart(userId);
+    displayCart(userEmail);
 }
 
-function completeOrder(userId) {
+function completeOrder(userEmail) {
     let carts = JSON.parse(localStorage.getItem('carts')) || {};
-    let cart = carts[userId] || [];
+    let cart = carts[userEmail] || [];
     let purchaseDate = new Date().toISOString().split('T')[0];
 
     if (cart.length > 0) {
@@ -136,7 +136,7 @@ function completeOrder(userId) {
                 let jsonData = JSON.parse(data);
                 if (jsonData.success) {
                     alert('Acquisto effettuato, grazie!');
-                    clearCart(userId);
+                    clearCart(userEmail);
                     window.location.replace('index.php');
                 } else {
                     alert('Errore nell\'invio del carrello.');

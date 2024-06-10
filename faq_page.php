@@ -18,7 +18,7 @@
 
 <?php include("header.php"); ?>
 
-<main>
+<main class="w3-container w3-center w3-padding-64">
 
 <div class="w3-container faq-section">
     <h2 class="w3-center">Domande Frequenti (FAQ)</h2>
@@ -27,7 +27,7 @@
         <header class="w3-container w3-light-grey faq-question">
             <h3>Quali tipi di cabinati arcade vendete?</h3>
         </header>
-        <div id="faq1" class="w3-container faq-answer">
+        <div class="w3-container faq-answer">
             <p>Vendiamo una vasta gamma di cabinati arcade, dai classici cabinati retrò ai modelli più moderni con schermi ad alta definizione e connessione internet per il multiplayer online.</p>
         </div>
     </div>
@@ -36,7 +36,7 @@
         <header class="w3-container w3-light-grey faq-question">
             <h3>Posso personalizzare il mio cabinato?</h3>
         </header>
-        <div id="faq2" class="w3-container faq-answer">
+        <div class="w3-container faq-answer">
             <p>Sì, offriamo diverse opzioni di personalizzazione per i nostri cabinati arcade, inclusi temi grafici personalizzati, configurazioni dei controlli e scelte di hardware.</p>
         </div>
     </div>
@@ -45,7 +45,7 @@
         <header class="w3-container w3-light-grey faq-question">
             <h3>Come viene gestita la spedizione dei cabinati?</h3>
         </header>
-        <div id="faq3" class="w3-container faq-answer">
+        <div class="w3-container faq-answer">
             <p>Utilizziamo servizi di spedizione specializzati per garantire che i cabinati arrivino in perfette condizioni. I costi di spedizione variano a seconda della destinazione e delle dimensioni del cabinato.</p>
         </div>
     </div>
@@ -54,7 +54,7 @@
         <header class="w3-container w3-light-grey faq-question">
             <h3>Qual è la politica di garanzia per i cabinati?</h3>
         </header>
-        <div id="faq4" class="w3-container faq-answer">
+        <div class="w3-container faq-answer">
             <p>I nostri cabinati arcade sono coperti da una garanzia di 12 mesi che copre difetti di fabbricazione e problemi hardware. Offriamo anche supporto tecnico per tutta la vita del prodotto.</p>
         </div>
     </div>
@@ -63,7 +63,7 @@
         <header class="w3-container w3-light-grey faq-question">
             <h3>Avete un supporto clienti?</h3>
         </header>
-        <div id="faq5" class="w3-container faq-answer">
+        <div class="w3-container faq-answer">
             <p>Sì, il nostro team di supporto clienti è disponibile 24/7 per assisterti con qualsiasi domanda o problema. Puoi contattarci tramite email, telefono o chat dal vivo sul nostro sito.</p>
         </div>
     </div>
@@ -72,7 +72,7 @@
         <header class="w3-container w3-light-grey faq-question">
             <h3>Quali metodi di pagamento accettate?</h3>
         </header>
-        <div id="faq6" class="w3-container faq-answer">
+        <div class="w3-container faq-answer">
             <p>Accettiamo vari metodi di pagamento, tra cui carte di credito, PayPal, bonifici bancari e pagamenti rateali attraverso servizi finanziari partner.</p>
         </div>
     </div>

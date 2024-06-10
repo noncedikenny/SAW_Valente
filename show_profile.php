@@ -34,8 +34,9 @@
             <nav>
                 <a href="#" style="text-decoration: none">Newsletter</a> |
                 <a href="#" style="text-decoration: none">Lingua</a> |
-                <a href="scripts/logout.php" style="text-decoration: none">Logout</a> |
-                <?php echo "<a href='scripts/delete_account.php' style='color: red; text-decoration: none' onclick='clearCart(\"{$_SESSION['email']}\")'>Elimina l'Account</a>"; ?>
+                <a href="scripts/logout.php" style="text-decoration: none">Logout</a>
+                
+                <p style="color: red; cursor: pointer;" id="delete_account">Elimina l'Account</p>
             </nav>
         </div>
 
@@ -143,49 +144,19 @@
 <!-- Include script to clear user's cart -->
 <script src="scripts/cart_logic.js"></script>
 
+<!-- Include utils scripts -->
+<script src="scripts/show_profile_utils.js"></script>
+
 <script>
-    function checkWindowSize() {
-        if (window.innerWidth <= 768) {
-            $("#main-div").removeClass('w3-card');
-        } else {
-            $("#main-div").addClass('w3-card');
+    $("#delete_account").on('click', function() {
+        if (confirm("Sei sicuro di voler eliminare l'account?") == true) {
+            clearCart("<?php echo $_SESSION['email']; ?>");
+            window.location.href = 'scripts/delete_account.php';
         }
-    }
-
-    $(document).ready(function(){
-        $('#number_cc').on('input', function() {
-            var val = $(this).val().replace(/\D/g, '');
-            var newVal = '';
-
-            for (var i = 0; i < val.length; i++) {
-                if (i > 0 && i % 4 === 0) {
-                    newVal += ' ';
-                }
-                newVal += val[i];
-            }
-
-            $(this).val(newVal);
-        });
-
-        $('#exp_cc').on('input', function() {
-            var val = $(this).val().replace(/\D/g, '');
-            if (val.length > 2) {
-                val = val.substring(0, 2) + '/' + val.substring(2, 4);
-            }
-            $(this).val(val);
-        });
-
-        $('#sc_cc').on('input', function() {
-            var val = $(this).val().replace(/\D/g, '');
-            $(this).val(val);
-        });
-
-        // Check on document ready
-        checkWindowSize();
+        else {
+            alert("Hai fatto la scelta giusta.");
+        }
     });
-
-    // Check on window resize
-    $(window).resize(checkWindowSize);
 </script>
 
 <?php include('footer.html'); ?>

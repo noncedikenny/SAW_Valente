@@ -13,10 +13,5 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
 
-// Delete user's cart
-echo '<script src="cart_logic.js">';
-    echo "clearCart(\"{$_SESSION['email']}\");";
-echo '</script>';
-
 // Reuse the same script used for logout to delete cookies etc...
 include('logout.php');

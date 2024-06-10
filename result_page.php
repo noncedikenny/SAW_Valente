@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 
 <?php require_once('utilities/cookie_check.php'); ?>
@@ -39,7 +39,7 @@
                 unset($_SESSION['result']);
             ?>
         </div>
-</main>
+    </main>
 
 
     <?php include('footer.html') ?>

@@ -18,7 +18,7 @@
     include('header.php'); 
     include('buy_popup_layout.php'); 
     ?>
-<main>
+<main class="w3-container w3-center w3-padding-64">
 
     <div class="w3-container w3-center w3-margin-top">
         <h1>Acquista i nostri cabinati</h1>
@@ -27,10 +27,10 @@
 
     <div>
         <!-- Row 1 -->
-        <div class="w3-row-padding product-container" style="margin: 0 auto;">
+        <div class="w3-row-padding w3-padding-32 product-container" style="margin: 0 auto;">
             <!-- Bartop -->
             <div class="w3-card w3-third w3-center w3-padding-32 product">
-                <img src="photos/shop_photos/bartop.png" alt="Bartop"> <br>
+                <img src="photos/shop_photos/Bartop.png" alt="Bartop"> <br>
                 <h3>Bartop</h3>
                 <h5>A partire da 400€</h5>
                 <?php 
@@ -42,7 +42,7 @@
 
             <!-- 4 Players -->
             <div class="w3-card w3-third w3-center w3-padding-32 product">
-                <img src="photos/shop_photos/quattro giocatori.png" alt="Quattro Giocatori"> <br>
+                <img src="photos/shop_photos/Quattro Giocatori.png" alt="Quattro Giocatori"> <br>
                 <h3>Quattro Giocatori</h3>
                 <h5>A partire da 700€</h5>
                 <?php 
@@ -54,7 +54,7 @@
 
             <!-- Classic -->
             <div class="w3-card w3-third w3-center w3-padding-32 product">
-                <img src="photos/shop_photos/classico.png" alt="Classico"> <br>
+                <img src="photos/shop_photos/Classico.png" alt="Classico"> <br>
                 <h3>Classico</h3>
                 <h5>A partire da 600€</h5>
                 <?php 
@@ -70,7 +70,7 @@
             
             <!-- Mounted on Wall -->
             <div class="w3-card w3-third w3-center w3-padding-32 product">
-                <img src="photos/shop_photos/a muro.png" alt="A Muro"> <br>
+                <img src="photos/shop_photos/A Muro.png" alt="A Muro"> <br>
                 <h3>A muro</h3>
                 <h5>A partire da 500€</h5>
                 <?php 
@@ -82,7 +82,7 @@
 
             <!-- Racing -->
             <div class="w3-card w3-third w3-center w3-padding-32 product">
-                <img src="photos/shop_photos/racing.png" alt="Racing"> <br>
+                <img src="photos/shop_photos/Racing.png" alt="Racing"> <br>
                 <h3>Racing</h3>
                 <h5>A partire da 1000€</h5>
                 <?php 
@@ -113,7 +113,7 @@
 
             <!-- Buttons -->
             <div class="w3-card w3-third w3-center w3-padding-32 product">
-                <img src="photos/shop_photos/kit di pulsanti.png" alt="Pulsanti"> <br>
+                <img src="photos/shop_photos/Kit di Pulsanti.png" alt="Pulsanti"> <br>
                 <h3>Kit di Pulsanti</h3>
                 <h5>20€</h5>
                 <?php 
@@ -131,7 +131,7 @@
 
             <!-- Steering Wheel -->
             <div class="w3-card w3-third w3-center w3-padding-32 product">
-                <img src="photos/shop_photos/volante.png" alt="Volante"> <br>
+                <img src="photos/shop_photos/Volante.png" alt="Volante"> <br>
                 <h3>Volante</h3>
                 <h5>50€</h5>
                 <?php 

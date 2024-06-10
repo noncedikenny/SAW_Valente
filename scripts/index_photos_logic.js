@@ -9,7 +9,7 @@ function plusDivs(n) {
 
 // Function to show the current slide based on the slide index
 function showDivs() {
-    let $slides = $(".mySlides");
+    let $slides = $(".indexSlides");
     
     // Reset the slide index if it exceeds the number of slides
     if (slideIndex >= $slides.length) {

@@ -21,7 +21,10 @@
         <h1>Scopri chi siamo e contattaci.</h1>
     </div>
 
+    <!-- About us div -->
     <div class="about-content w3-container w3-padding-32">
+        
+        <!-- About us -->
         <h2>Chi siamo</h2>
         <p>
             Fondata nel 2024, ci impegniamo a offrire ai nostri clienti non solo cabinati impeccabilmente realizzati, ma vere e proprie opere d'arte
@@ -40,6 +43,7 @@
         </p>
         <img src="photos/aboutus_photos/aboutus_team.jpeg" alt="Foto di Squadra">
     
+        <!-- Our wood -->
         <h2>Il nostro legno</h2>
         <p>
             Nel cuore della nostra azienda di cabinati, il processo di produzione inizia con la cura e l'attenzione rivolta alla materia prima fondamentale: il legno.
@@ -57,6 +61,7 @@
         </p>
         <img src="photos/aboutus_photos/aboutus_woodcutting.jpeg" alt="Taglio del legno">
 
+        <!-- Raspberry Pi 5 -->
         <h2>Il Raspberry Pi 5</h2>
         <p>
             Il Raspberry Pi è un microcomputer a basso costo, sviluppato dalla Raspberry Pi Foundation, che ha rivoluzionato il mondo dell'elettronica e dell'istruzione. 
@@ -76,6 +81,7 @@
     
     </div>
 
+    <!-- Contacts -->
     <button id="contact_us" class="w3-btn w3-green" style="font-size: 24px;">Contatta il team!</button>
     <div id="contacts" style="display: none;">
         <h3>0123456789</h3>
