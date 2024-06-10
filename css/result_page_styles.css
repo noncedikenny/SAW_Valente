@@ -34,8 +34,22 @@
     width: 75%;
 }
 
+#no_results {
+    width: 50%;
+    margin: 50 auto;
+}
+
 @media screen and (max-width: 768px) {
     .product {
         margin: 20px auto;
+    }
+    #no_results {
+        width: 100%;
+    }
+    #no_results img {
+        display: none;
+    }
+    .product-container {
+        width: 100%;
     }
 }

@@ -21,11 +21,9 @@
         <h1>Scopri chi siamo e contattaci.</h1>
     </div>
 
-
-
     <div class="about-content w3-container w3-padding-32">
         <h2>Chi siamo</h2>
-        <p style="text-align: justify">
+        <p>
             Fondata nel 2024, ci impegniamo a offrire ai nostri clienti non solo cabinati impeccabilmente realizzati, ma vere e proprie opere d'arte
             che riflettono la nostra passione per il legno e l'artigianato.
             <br>
@@ -43,7 +41,7 @@
         <img src="photos/aboutus_photos/aboutus_team.jpeg" alt="Foto di Squadra">
     
         <h2>Il nostro legno</h2>
-        <p style="text-align: justify">
+        <p>
             Nel cuore della nostra azienda di cabinati, il processo di produzione inizia con la cura e l'attenzione rivolta alla materia prima fondamentale: il legno.
             Scegliamo con cura le migliori essenze legnose, provenienti da foreste gestite in modo sostenibile, per garantire la qualità e la durabilità dei nostri cabinati.
             Una volta selezionato il legno più adatto al nostro progetto, passiamo al processo di taglio.
@@ -60,7 +58,7 @@
         <img src="photos/aboutus_photos/aboutus_woodcutting.jpeg" alt="Taglio del legno">
 
         <h2>Il Raspberry Pi 5</h2>
-        <p style="text-align: justify">
+        <p>
             Il Raspberry Pi è un microcomputer a basso costo, sviluppato dalla Raspberry Pi Foundation, che ha rivoluzionato il mondo dell'elettronica e dell'istruzione. 
             Con dimensioni compatte e un prezzo accessibile, il Raspberry Pi è utilizzato in una vasta gamma di progetti, dall'apprendimento della programmazione alla realizzazione
             di sistemi di automazione domestica. La sua versatilità e potenza lo rendono uno strumento ideale per hobbisti, studenti e professionisti che desiderano esplorare il
@@ -92,29 +90,51 @@
                 <img src="photos/team_member.png" alt="Emanuele Valente" class="w3-circle" style="width:50%">
                 <h3>Emanuele Valente</h3>
                 <p>CEO & Founder</p>
+                <div class="member_contacts">
+                    <span>+39 348 123 4567</span> <br>
+                    <span>randomuser123@example.com</span>
+                </div>
             </div>
             <div class="w3-col l3 m6 team-member">
                 <img src="photos/team_member.png" alt="Mario Rossi" class="w3-circle" style="width:50%">
                 <h3>Mario Rossi</h3>
                 <p>Head of Marketing</p>
+                <div class="member_contacts">
+                    <span>+44 7911 654321</span> <br>
+                    <span>test.email456@domain.org</span>
+                </div>
             </div>
             <div class="w3-col l3 m6 team-member">
                 <img src="photos/team_member.png" alt="Luigi Verdi" class="w3-circle" style="width:50%">
                 <h3>Luigi Verdi</h3>
                 <p>CTO</p>
+                <div class="member_contacts">
+                    <span>+1 202 555 0198</span> <br>
+                    <span>fakeemail789@website.net</span>
+                </div>
             </div>
             <div class="w3-col l3 m6 team-member">
                 <img src="photos/team_member.png" alt="Luca Bianchi" class="w3-circle" style="width:50%">
                 <h3>Luca Bianchi</h3>
                 <p>Head of Sales</p>
+                <div class="member_contacts">
+                    <span>+39 320 987 6543</span> <br>
+                    <span>randomuser456@example.com</span>
+                </div>
             </div>
         </div>
     </div>
 </main>
 
 <script>
-    $("#contact_us").on('click', function() {
-        $("#contacts").slideToggle();
+    $(document).ready(function() {
+        $("#contact_us").on('click', function() {
+            $("#contacts").slideToggle();
+        });
+
+        $(".team-member").click(function() {
+            $(this).find(".member_contacts").slideToggle();
+        });
     });
 </script>
 

@@ -17,13 +17,13 @@
     <?php include('header.php'); ?>
 
     <main>
-        <div class='w3-row-padding product-container' style='margin: 0 auto; cursor: pointer;' onclick='window.location.replace("shop.php")'>
+        <div class='w3-row-padding product-container' style='margin: 0 auto;'>
             <?php
                 $result = $_SESSION['result'] ?? null;
                 if (isset($_SESSION['result'])) {
                     $resultsArray = $_SESSION['result'];
                     foreach ($resultsArray as $row) { ?>
-                        <div class='w3-card w3-third w3-center w3-padding-32 product'>
+                        <div class='w3-card w3-third w3-center w3-padding-32 product' style="cursor: pointer;" onclick='window.location.replace("shop.php")'>
                             <div id='search-result'>
                                 <img src='photos/shop_photos/<?php echo $row['name']; ?>.png' alt='Prodotto' class='w3-image' style='width: 80%'>
                                 <h2><?php echo $row['name']; ?>: <?php echo $row['price']; ?>€</h2>

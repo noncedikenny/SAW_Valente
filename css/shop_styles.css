@@ -84,4 +84,7 @@
         left: 0;
         transform: none;
     }
+    .product-container {
+        width: 100%;
+    }
 }

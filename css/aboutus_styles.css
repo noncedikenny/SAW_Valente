@@ -8,12 +8,19 @@
     height: auto;
     margin-bottom: 32px;
 }
+.about-content p {
+    text-align: justify;
+}
+.member_contacts {
+    display: none;
+}
 .team-div {
     background-color: #fff;
     padding: 64px 16px;
 }
 .team-member {
     text-align: center;
+    cursor: pointer;
     margin-bottom: 32px;
 }
 
