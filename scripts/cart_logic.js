@@ -28,9 +28,9 @@ function displayCart(userId) {
     // If your cart is empty, show an empty cart message
     if (cart.length === 0) {
         $cartItemsContainer.html(`
-            <div class="w3-center">
+            <div class="w3-center empty_container">
                 <img src="../photos/empty_cart.png" style="width: 25%;" alt="Carrello vuoto">
-                <p>Il carrello è vuoto.</p>
+                <h2>Il carrello è vuoto.</h2>
             </div>
         `);
     } else {

@@ -19,6 +19,7 @@ if (isset($_COOKIE['remember_token'])) {
             $_SESSION['firstname'] = $row['FirstName'];
             $_SESSION['lastname'] = $row['LastName'];
             $_SESSION['email'] = $row['Email'];
+            $_SESSION['islogged'] = true;
         }
     }
 

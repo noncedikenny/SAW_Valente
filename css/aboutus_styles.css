@@ -1,0 +1,27 @@
+.about-content {
+    margin: 32px auto;
+    max-width: 1000px;
+    text-align: left;
+}
+.about-content img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 32px;
+}
+.team-div {
+    background-color: #fff;
+    padding: 64px 16px;
+}
+.team-member {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+@media screen and (max-width: 768px) {
+    .about-content img {
+        display: none;
+    }
+    .about-content h2 {
+        text-align: center;
+    }
+}

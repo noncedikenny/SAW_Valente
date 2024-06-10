@@ -6,25 +6,11 @@
 <head>
     <?php include('head_items.html'); ?>
 
-    <style>
-        /* Definizione dello stile per l'immagine del carrello */
-        #cart-img {
-            position: fixed;   /* Posizione fissa */
-            bottom: 50px;      /* Distanza dal fondo dello schermo */
-            right: 50px;       /* Distanza dal lato destro dello schermo */
-            width: 70px;       /* Larghezza dell'immagine */
-            height: 70px;      /* Altezza dell'immagine */
-            border-radius: 50%; /* Per rendere l'immagine circolare */
-            border: 5px solid lightgrey; /* Per aggiungere un bordo rosso */
-        }
-
-        #cart-img:hover {
-            filter: brightness(50%);  /* Imposta la luminosità dell'immagine al 50% del normale */
-        }
-    </style>
-
     <!-- Title -->
     <title>Catalogo - SAW | Cabinets</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/shop_styles.css">
 </head>
 
 <body>

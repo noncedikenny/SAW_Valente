@@ -26,13 +26,13 @@
 <?php include('header.php'); ?>
 
 <main>
-    <div class="w3-card w3-padding-32 options-container">
+    <div id="main-div" class="w3-card w3-padding-32 options-container">
         <h1 class='w3-center' style='padding: 10px;'>Benvenuto <?php echo "{$_SESSION['firstname']} {$_SESSION['lastname']}"; ?></h1>
 
         <!-- User settings navigation -->
         <div class="w3-bar w3-center">
             <nav>
-                <a href="#" style="text-decoration: none">Notifiche</a> |
+                <a href="#" style="text-decoration: none">Newsletter</a> |
                 <a href="#" style="text-decoration: none">Lingua</a> |
                 <a href="scripts/logout.php" style="text-decoration: none">Logout</a> |
                 <?php echo "<a href='scripts/delete_account.php' style='color: red; text-decoration: none' onclick='clearCart(\"{$_SESSION['email']}\")'>Elimina l'Account</a>"; ?>
@@ -130,8 +130,8 @@
                 <label for="exp_creditcard">Scadenza della Carta</label>
                 <input class="w3-input w3-round-large" type="text" id="exp_cc" maxlength="5" value="**/**">
 
-                <label for="securitycode_creditcard"></label>
-                <input class="w3-input w3-round-large" type="text" maxlength="3" id="sc_cc" value="***">
+                <label for="securitycode_creditcard">Codice di Sicurezza della Carta</label>
+                <input class="w3-input w3-round-large" type="text" id="sc_cc" maxlength="3" id="sc_cc" value="***">
 
                 <!-- Submit button -->
                 <input class="w3-button w3-black w3-round" style="margin: 20px 0 0 0;" type="submit" name="submit" value="Cambia I Tuoi Dati">
@@ -144,23 +144,48 @@
 <script src="scripts/cart_logic.js"></script>
 
 <script>
-$(document).ready(function(){
-    $('#number_cc').on('input', function() {
-        var val = $(this).val();
-
-        if (val.length === 4 || val.length === 9 || val.length === 14) {
-            $(this).val(val + ' ');
+    function checkWindowSize() {
+        if (window.innerWidth <= 768) {
+            $("#main-div").removeClass('w3-card');
+        } else {
+            $("#main-div").addClass('w3-card');
         }
-    })
+    }
 
-    $('#exp_cc').on('input', function() {
-        var val = $(this).val();
+    $(document).ready(function(){
+        $('#number_cc').on('input', function() {
+            var val = $(this).val().replace(/\D/g, '');
+            var newVal = '';
 
-        if (val.length === 2 && val.indexOf('/') === -1) {
-            $(this).val(val + '/');
-        }
-    })
-})
+            for (var i = 0; i < val.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    newVal += ' ';
+                }
+                newVal += val[i];
+            }
+
+            $(this).val(newVal);
+        });
+
+        $('#exp_cc').on('input', function() {
+            var val = $(this).val().replace(/\D/g, '');
+            if (val.length > 2) {
+                val = val.substring(0, 2) + '/' + val.substring(2, 4);
+            }
+            $(this).val(val);
+        });
+
+        $('#sc_cc').on('input', function() {
+            var val = $(this).val().replace(/\D/g, '');
+            $(this).val(val);
+        });
+
+        // Check on document ready
+        checkWindowSize();
+    });
+
+    // Check on window resize
+    $(window).resize(checkWindowSize);
 </script>
 
 <?php include('footer.html'); ?>

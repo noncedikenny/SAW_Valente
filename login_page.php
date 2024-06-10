@@ -7,9 +7,9 @@
     <!-- Title -->
     <title>Login - SAW | Cabinets</title>
 
-    <style>
-        .error {color: #FF0000; font-size: 10px;}
-    </style>
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/forms_styles.css">
+
 </head>
 
 <body>

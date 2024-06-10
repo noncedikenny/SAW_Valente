@@ -1,0 +1,40 @@
+.logo-container {
+    margin: 0 auto;
+    padding: 25px;
+    width: 100%;
+}
+
+.logo-container img {
+    width: 25%;
+}
+
+.options-container {
+    margin: 50px auto;
+    width: 75%;
+}
+
+.search-container {
+    overflow: hidden;
+    width: 75%;
+    margin: 0 auto;
+}
+  
+.search-container input[type="text"] {
+    border: none;
+    line-height: 1.5;
+    padding: 5px 10px;
+    width: 75%;
+}
+
+.search-container input[type="text"]:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 768px) {
+    .logo-container img {
+        width: 100%;
+    }
+    .options-container {
+        width: 100%;
+    }
+}

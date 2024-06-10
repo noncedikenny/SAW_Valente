@@ -7,6 +7,9 @@
     <?php include('head_items.html'); ?>
     <!-- Title -->
     <title>Carrello - SAW | Cabinets</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/cart_styles.css">
 </head>
 
 <body>
@@ -15,13 +18,16 @@
 <main>
     <?php
         if(isset($_SESSION['islogged']) && $_SESSION['islogged'] == true) { ?>
-            <div class="w3-container" style="margin: 30px;">
+            <div id="logged_container" class="w3-container" style="margin: 30px;">
                 <h2>Il tuo carrello</h2>
-                <div id="cart-items" class="w3-margin w3-padding w3-card-4"></div>
+                <div id="cart-items" class="w3-margin w3-padding"></div>
                 <h4 id="showTotalPrice"></h4>
-                <button class='w3-button w3-green' onclick='completeOrder("<?php echo $_SESSION["email"]; ?>")'>Completa l'ordine</button>
-                <button class='w3-button w3-red w3-right' onclick='clearCart("<?php echo $_SESSION["email"]; ?>")'>Svuota carrello</button>
-                <a href="shop.php" class="w3-button w3-blue">Continua lo shopping</a>
+
+                <div class="buttons-container">
+                    <button class='w3-button w3-green' onclick='completeOrder("<?php echo $_SESSION["email"]; ?>")'>Completa l'ordine</button>
+                    <button class='w3-button w3-red w3-right' onclick='clearCart("<?php echo $_SESSION["email"]; ?>")'>Svuota carrello</button>
+                    <a href="shop.php" class="w3-button w3-blue">Continua lo shopping</a>
+                </div>
             </div>
         <?php }
         else { ?>
@@ -34,7 +40,7 @@
 </main>
 
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
+    $(document).ready(function() {
         displayCart("<?php echo $_SESSION['email'] ?>");
     });
 </script>

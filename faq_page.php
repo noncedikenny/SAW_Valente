@@ -9,20 +9,8 @@
     <!-- Title -->
     <title>FAQ - SAW | Cabinets</title>
 
-    <style>
-        .faq-section {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-        }
-        .faq-question {
-            cursor: pointer;
-        }
-        .faq-answer {
-            display: none;
-            margin-top: 5px;
-        }
-    </style>
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/faq_styles.css">
     
 </head>
 
@@ -32,11 +20,11 @@
 
 <main>
 
-<div class="w3-container w3-light-grey faq-section">
+<div class="w3-container faq-section">
     <h2 class="w3-center">Domande Frequenti (FAQ)</h2>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question">
+        <header class="w3-container w3-light-grey faq-question">
             <h3>Quali tipi di cabinati arcade vendete?</h3>
         </header>
         <div id="faq1" class="w3-container faq-answer">
@@ -45,7 +33,7 @@
     </div>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question">
+        <header class="w3-container w3-light-grey faq-question">
             <h3>Posso personalizzare il mio cabinato?</h3>
         </header>
         <div id="faq2" class="w3-container faq-answer">
@@ -54,7 +42,7 @@
     </div>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question">
+        <header class="w3-container w3-light-grey faq-question">
             <h3>Come viene gestita la spedizione dei cabinati?</h3>
         </header>
         <div id="faq3" class="w3-container faq-answer">
@@ -63,7 +51,7 @@
     </div>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question">
+        <header class="w3-container w3-light-grey faq-question">
             <h3>Qual è la politica di garanzia per i cabinati?</h3>
         </header>
         <div id="faq4" class="w3-container faq-answer">
@@ -72,7 +60,7 @@
     </div>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question">
+        <header class="w3-container w3-light-grey faq-question">
             <h3>Avete un supporto clienti?</h3>
         </header>
         <div id="faq5" class="w3-container faq-answer">
@@ -81,7 +69,7 @@
     </div>
 
     <div class="w3-card-4 w3-margin">
-        <header class="w3-container w3-grey faq-question">
+        <header class="w3-container w3-light-grey faq-question">
             <h3>Quali metodi di pagamento accettate?</h3>
         </header>
         <div id="faq6" class="w3-container faq-answer">
@@ -97,7 +85,7 @@
 <script>
     $(document).ready(function() {
         $('.faq-question').click(function() {
-            $(this).next('.faq-answer').toggle();
+            $(this).next('.faq-answer').slideToggle();
         });
     });
 </script>

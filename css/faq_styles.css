@@ -1,0 +1,14 @@
+.faq-section {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.faq-question {
+    cursor: pointer;
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 5px;
+}
